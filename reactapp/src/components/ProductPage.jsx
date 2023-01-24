@@ -9,7 +9,7 @@ import { Card, Col, Row, Spinner} from "react-bootstrap";
 const ProductPage = () => {
   const { id } = useParams();
   const { products } = useProducts();
-  const {addToBasket} = useBasket();
+  const {addBasket} = useBasket();
   const storage = getStorage();
   const [url, setUrl] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -55,7 +55,7 @@ const ProductPage = () => {
               £{product.ProductPrice}
               <br />
               {product.description}
-              <button onClick={() => addToBasket(id)}>
+              <button onClick={() => addBasket(id)}>
                 Add to basket
               </button>
             </Card.Text>

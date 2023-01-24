@@ -15,6 +15,7 @@ import ProductPage from "./ProductPage";
 //contexts
 import { AuthProvider } from "../contexts/AuthContext"
 import { ProductsProvider } from "../contexts/ProductsContext";
+import { BasketProvider } from "../contexts/BasketContext";
 //routing 
 import {
   BrowserRouter as Router,
@@ -32,7 +33,9 @@ function App(){
     >
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <AuthProvider>
+        
           <ProductsProvider>
+          <BasketProvider>
             <Router>
               <NavigationBar />
 
@@ -64,7 +67,9 @@ function App(){
                 <Route path="/products/:id" element={<ProductPage/>} />
               </Routes>
             </Router>
+            </BasketProvider>
           </ProductsProvider>
+          
         </AuthProvider>
       </div>
     </Container>
