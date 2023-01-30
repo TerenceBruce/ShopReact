@@ -10,13 +10,13 @@ const ProductsList = () => {
   const { products, deleteProduct } =
     useProducts();
   const [urls, setUrls] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
   const storage = getStorage();
 
   useEffect(() => {
+    setLoading(true);
     if (products) {
-      setLoading(true);
       products.forEach((product) => {
         const imageRef = ref(storage, `Product/${product.ProductImage}`);
         getDownloadURL(imageRef)
@@ -36,15 +36,17 @@ const ProductsList = () => {
     }
   }, []);
 
+   if (products.length===0) {
+     return <p>No products found</p>;
+   }
   if (loading) {
     return <Spinner animation="border" variant="primary" />;
+   
   }
   if (error) {
     return <p>An error occurred: {error.message}</p>;
   }
-  if (!products) {
-    return <p>No products found</p>;
-  }
+ 
 
   return (
     <Row>
@@ -65,7 +67,7 @@ const ProductsList = () => {
                 </Link>
               </Card.Title>
               <Card.Text>
-                {product.ProductPrice}
+                £{product.ProductPrice}
                 <br />
                 <button
                   onClick={() => deleteProduct(product.id, product.ProductImage)}

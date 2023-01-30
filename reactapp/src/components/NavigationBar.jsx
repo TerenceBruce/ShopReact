@@ -8,6 +8,7 @@ import {
     NavLink,
     Offcanvas } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
+import { useBasket } from '../contexts/BasketContext';
 import Logout from './Logout';
 import { useLocation, Link } from 'react-router-dom';
 import '../css/navbar.css';
@@ -17,6 +18,7 @@ export default function TestNavbar() {
 
  
 const { currentUser }=useAuth()
+const { viewBasket, basketTotal } = useBasket();
 
     return ["xxxl"].map((expand) => (
       <Navbar
@@ -31,6 +33,7 @@ const { currentUser }=useAuth()
           <Navbar.Brand className="streetwear-nav-link" href="/">
             Terry's App
           </Navbar.Brand>
+          <Button onClick={() => viewBasket()}>View Basket {basketTotal()}</Button>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}

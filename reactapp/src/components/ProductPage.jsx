@@ -45,7 +45,7 @@ const ProductPage = () => {
   return (
     <Row>
       <Col sm={12} md={6} lg={4}>
-        <Card>
+        <Card >
           {url && (
             <Card.Img src={url} variant="top" alt={product.ProductName} />
           )}
@@ -55,9 +55,7 @@ const ProductPage = () => {
               £{product.ProductPrice}
               <br />
               {product.description}
-              <button onClick={() => addBasket(id)}>
-                Add to basket
-              </button>
+              <button onClick={() => addBasket(id)}>Add to basket</button>
             </Card.Text>
           </Card.Body>
         </Card>

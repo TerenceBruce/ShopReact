@@ -61,7 +61,7 @@ export function ProductsProvider({ children }) {
     setProducts
   };
   return (
-    <ProductsContext.Provider value={value}>
+    <ProductsContext.Provider  value={value}>
       {error ? (
         <div>
           <p>An error occurred: {error.message}</p>

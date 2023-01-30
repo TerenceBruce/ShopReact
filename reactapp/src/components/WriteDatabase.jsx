@@ -1,7 +1,7 @@
 import  React, {useState,useRef} from 'react';
 import { storage} from "../firebase"; 
 import {collection, addDoc} from "firebase/firestore";
-import { Button,Alert, Card,Form} from 'react-bootstrap';
+import { Button,Alert, Card,Form, CardImg} from 'react-bootstrap';
 import {db} from '../firebase';
 import { ref, uploadBytes} from "firebase/storage";
 import {v4} from "uuid";
@@ -60,32 +60,33 @@ export default function WriteDatabase() {
     }
     
   return (
-    <div>   
+    <div>
       <Card>
         <Card.Body>
-            <h2 className='text-center mb-4'>Add product</h2>
-            {error && <Alert variant='danger'>{error}</Alert>}
-            {success && <Alert variant='success'>{success}</Alert>}
-            <Form onSubmit={AddProduct}>
-            <Form.Group id = "ProductName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type ="text" ref={productName} required/>
+          {/* <Card.Img variant="top" src={productName} /> */}
+          <h2 className="text-center mb-4">Add product</h2>
+          {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
+          <Form onSubmit={AddProduct}>
+            <Form.Group id="ProductName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" ref={productName} required />
             </Form.Group>
-            <Form.Group id = "ProductImage">
-                <Form.Label> Image</Form.Label>
-                <Form.Control type ="file" onChange={productImgHandler} required 
-                  />
+            <Form.Group id="ProductImage">
+              <Form.Label> Image</Form.Label>
+              <Form.Control type="file" onChange={productImgHandler} required />
             </Form.Group>
-            <Form.Group id = "ProductPrice">
-                <Form.Label> Price</Form.Label>
-                <Form.Control type ="number" ref={productPrice} required/>
-                </Form.Group>
-            <Button  className="w-100 text-center mt-2" type="submit">Add Product</Button>
-            </Form>
+            <Form.Group id="ProductPrice">
+              <Form.Label> Price</Form.Label>
+              <Form.Control type="price" ref={productPrice} required />
+            </Form.Group>
+            <Button className="w-100 text-center mt-2" type="submit">
+              Add Product
+            </Button>
+          </Form>
         </Card.Body>
       </Card>
-     
     </div>
-  )
+  );
 }
 

@@ -1,4 +1,6 @@
-import React, { createContext,useContext, useState, useEffect } from "react";
+import React, { createContext,useContext, useState, 
+    // useEffect 
+} from "react";
 
 const BasketContext = createContext()
 
@@ -7,13 +9,31 @@ export function useBasket(){
 }
 
 export function BasketProvider({ children }) {
+    const [error,setError]= useState(null)
     const [loading, setLoading] =useState(false)
-    const [basket,setBasket] = useState([null])
+    const [basket,setBasket] = useState([])
     function addBasket(productId){
-        const checkBasket= basket.find((basket) => productId )
-        console.log(checkBasket)
-        // setBasket(productId)
-        // console.log(basket)
+        if (basket.includes(productId)){
+            setError("This Product is already in the basket")
+            console.log("dup")
+        }
+        else{
+            setBasket((basket) => [...basket, productId]);
+            console.log(basket)
+        }
+       
+    }
+    function basketTotal(){
+        const total = basket.length;
+        console.log(basket.length)
+        return total
+        
+
+    }
+    function viewBasket(){
+        console.log("viewBasket")
+        const listItems = basket.map((number) => <li>{number}</li>);
+        
     }
     // useEffect(() => {// in useEffect as only want to run when mount the component 
     // // const unsubscribe = auth.onAuthStateChanged(user => {
@@ -24,10 +44,11 @@ export function BasketProvider({ children }) {
     // //     return unsubscribe
     // }, [])
     
-    const value ={
-        addBasket
-    
-    }
+    const value = {
+      addBasket,
+      viewBasket,
+      basketTotal
+    };
 
     //passing in value then render the children and loading 
   return (
