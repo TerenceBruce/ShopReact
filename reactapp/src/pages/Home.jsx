@@ -3,25 +3,33 @@ import { Card } from 'react-bootstrap';
 // import ReadStorage from './ReadStorage'
 // import TestProduct from './TestProduct'
 import ProductList from '../components/ProductList'
-
+import '../css/home.css';
 export default function Home() {
     
   return (
     <div>
       <ProductList />
       <Card>
-        Todo List:
-        <li>
-          useContext
-          https://www.youtube.com/watch?v=5LrDIWkK_Bc&t=606s&ab_channel=WebDevSimplified
-          error with ProductContext line:14-16
-          https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en#add_a_document
-        </li>
-        <li>light and dark feature</li>
-        <li>Navigation styling with hover and cleaner look</li>
-        <li>Profile picture upload</li>
-        <li>use diffrent than create react app possibly vite?</li>
-        <li>create product plus pages</li>
+       Priorty:
+       <ol class="list">
+       <li class="list-item one">useState(Basket) delete on refresh</li>
+       <li class="list-item two">viewBasket model</li>
+       <li class="list-item three"></li>
+       </ol>
+      </Card>
+      <Card>
+        CSS:
+        <ol class="list">
+        <li class="list-item one">light and dark feature</li>
+        <li class="list-item two" >Navigation styling with hover and cleaner look</li>
+        </ol>
+      </Card>
+      <Card>
+      <ol class="list">
+        Extra Features:
+        <li class="list-item one">Profile picture upload</li>
+        <li class="list-item two">use diffrent than create react app possibly vite?</li>
+        </ol>
       </Card>
     </div>
   );

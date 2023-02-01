@@ -28,9 +28,10 @@ const { viewBasket, basketTotal } = useBasket();
         variant="dark"
         expand={expand}
         className="mb-3 navbar"
+        text-decoration="none"
       >
         <Container fluid>
-          <Navbar.Brand className="streetwear-nav-link" href="/">
+          <Navbar.Brand  href="/">
             Terry's App
           </Navbar.Brand>
           <Button onClick={() => viewBasket()}>View Basket {basketTotal()}</Button>
@@ -39,6 +40,7 @@ const { viewBasket, basketTotal } = useBasket();
             id={`offcanvasNavbar-expand-${expand}`}
             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
             placement="end"
+            className="streetwear-nav-link"
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title
@@ -47,17 +49,16 @@ const { viewBasket, basketTotal } = useBasket();
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <ActiveLink className="streetwear-nav-link" to="/">
+                <ActiveLink to="/">
                   Home
                 </ActiveLink>
                 <CheckUser />
                 <ActiveLink
-                  className="streetwear-nav-link"
                   to="/Admin/AddProduct"
                 >
                   Add Product
                 </ActiveLink>
-                <NavDropdown
+                {/* {/* <NavDropdown
                   title="Admin"
                   id={`offcanvasNavbarDropdown-expand-${expand}`}
                 >
@@ -69,9 +70,11 @@ const { viewBasket, basketTotal } = useBasket();
                   <NavDropdown.Item href="#action5">
                     Something else here
                   </NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-              <Form className="d-flex">
+                </NavDropdown> */}
+              
+          </Nav>
+
+              {/* <Form className="d-flex">
                 <Form.Control
                   type="search"
                   placeholder="Search"
@@ -80,8 +83,8 @@ const { viewBasket, basketTotal } = useBasket();
                 />
                 <Button variant="outline-success">Search</Button>
               </Form>{" "}
-              SEARCH OPTION
-            </Offcanvas.Body>
+              SEARCH OPTION */}
+            </Offcanvas.Body> 
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
