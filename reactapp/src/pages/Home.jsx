@@ -11,24 +11,24 @@ export default function Home() {
       <ProductList />
       <Card>
        Priorty:
-       <ol class="list">
-       <li class="list-item one">useState(Basket) delete on refresh</li>
-       <li class="list-item two">viewBasket model</li>
-       <li class="list-item three"></li>
+       <ol className="list">
+       <li className="list-item one">useState(Basket) delete on refresh</li>
+       <li className="list-item two">viewBasket model</li>
+       <li className="list-item three"></li>
        </ol>
       </Card>
       <Card>
         CSS:
-        <ol class="list">
-        <li class="list-item one">light and dark feature</li>
-        <li class="list-item two" >Navigation styling with hover and cleaner look</li>
+        <ol className="list">
+        <li className="list-item one">light and dark feature</li>
+        <li className="list-item two" >Navigation styling with hover and cleaner look</li>
         </ol>
       </Card>
       <Card>
-      <ol class="list">
+      <ol className="list">
         Extra Features:
-        <li class="list-item one">Profile picture upload</li>
-        <li class="list-item two">use diffrent than create react app possibly vite?</li>
+        <li className="list-item one">Profile picture upload</li>
+        <li className="list-item two">use diffrent than create react app possibly vite?</li>
         </ol>
       </Card>
     </div>

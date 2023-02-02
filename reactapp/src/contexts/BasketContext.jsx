@@ -1,7 +1,9 @@
 import React, { createContext,useContext, useState, 
     // useEffect 
 } from "react";
-
+import {db} from '../firebase';
+import {collection, addDoc} from "firebase/firestore";
+import { useAuth } from "../contexts/AuthContext"
 const BasketContext = createContext()
 
 export function useBasket(){
@@ -9,30 +11,30 @@ export function useBasket(){
 }
 
 export function BasketProvider({ children }) {
+    const { currentUser }=useAuth()
     const [error,setError]= useState(null)
     const [loading, setLoading] =useState(false)
-    const [basket,setBasket] = useState([])
-    function addBasket(productId){
-        if (basket.includes(productId)){
-            setError("This Product is already in the basket")
-            console.log("dup")
+    const uid = currentUser.uid
+    async function addBasket(productId){
+            console.log(uid)
+            await addDoc(collection(db, "Basket/",{uid}), {
+                ProductID: (productId),
+                Quantity: (+1)
+            })
         }
-        else{
-            setBasket((basket) => [...basket, productId]);
-            console.log(basket)
-        }
+        
        
-    }
+    
     function basketTotal(){
-        const total = basket.length;
-        console.log(basket.length)
-        return total
+        // const total = basket.length;
+        // console.log(basket.length)
+        // return total
         
 
     }
     function viewBasket(){
         console.log("viewBasket")
-        const listItems = basket.map((number) => <li>{number}</li>);
+        // const listItems = basket.map((number) => <li>{number}</li>);
         
     }
     // useEffect(() => {// in useEffect as only want to run when mount the component 

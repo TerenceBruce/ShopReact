@@ -28,7 +28,7 @@ const { viewBasket, basketTotal } = useBasket();
         variant="dark"
         expand={expand}
         className="mb-3 navbar"
-        text-decoration="none"
+        textDecoration="none"
       >
         <Container fluid>
           <Navbar.Brand  href="/">

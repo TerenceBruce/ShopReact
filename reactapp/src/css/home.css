@@ -17,16 +17,19 @@ ol {
   ol li:before {
     content: counter(item) " ";
     counter-increment: item;
-    color: #7eb4e2;
+    color: #000000;
     position: absolute;
     top: 50%;
     margin-top: -1em;
-    background: #f9dd94;
+    background: #8d02eb;
     height: 2em;
     width: 2em;
     line-height: 2em;
     text-align: center;
     border-radius: 2em;
     font-weight: 700;
+  }
+  Card {
+
   }
       
