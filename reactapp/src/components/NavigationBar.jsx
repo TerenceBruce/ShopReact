@@ -2,10 +2,10 @@ import  React from 'react'
 import { 
     Button,
      Container , 
-    Form, 
+    // Form, 
     Nav , Navbar , 
-    NavDropdown ,
-    NavLink,
+    // NavDropdown ,
+    // NavLink,
     Offcanvas } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
 import { useBasket } from '../contexts/BasketContext';
@@ -53,11 +53,7 @@ const { viewBasket, basketTotal } = useBasket();
                   Home
                 </ActiveLink>
                 <CheckUser />
-                <ActiveLink
-                  to="/Admin/AddProduct"
-                >
-                  Add Product
-                </ActiveLink>
+                
                 {/* {/* <NavDropdown
                   title="Admin"
                   id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -97,6 +93,7 @@ const { viewBasket, basketTotal } = useBasket();
           <>
             <ActiveLink to="/Profile"> Profile</ActiveLink>
             <ActiveLink to="/Admin/AddProduct">Admin</ActiveLink>
+            <ActiveLink to="/Admin/AddProduct">Add Product</ActiveLink>
             <strong>Email: </strong>
             {currentUser.email}
             <div className="w-100 text-center mt-2">
