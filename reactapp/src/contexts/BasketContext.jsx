@@ -1,8 +1,8 @@
 import React, { createContext,useContext, useState, 
-    // useEffect 
+   useEffect 
 } from "react";
 import {db} from '../firebase';
-import {collection, addDoc} from "firebase/firestore";
+import {addDoc, collection, setDoc,getDocs, where,query } from "firebase/firestore";
 import { useAuth } from "../contexts/AuthContext"
 const BasketContext = createContext()
 
@@ -13,38 +13,60 @@ export function useBasket(){
 export function BasketProvider({ children }) {
     const { currentUser }=useAuth()
     const [error,setError]= useState(null)
+    const [success,setSuccess]= useState(null)
     const [loading, setLoading] =useState(false)
-    const uid = currentUser.uid
+    const [basket,setBasket] =useState([])
+    const user = currentUser.uid
+
+    
+
+    async function getBasket(){
+        setLoading(true)
+        setBasket([])
+       
+        const q = query(collection(db, "UserBasket"), where("user", "==", {user}));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                    const productid=doc.data().ProductID
+                    setBasket(prevArray  => [...prevArray ,productid]);
+                });
+                setLoading(false)
+   
+}
     async function addBasket(productId){
-            console.log(uid)
-            await addDoc(collection(db, "Basket/",{uid}), {
-                ProductID: (productId),
-                Quantity: (+1)
-            })
+            try{
+                await addDoc(collection(db, "UserBasket/"), {
+                    user:{user},
+                    ProductID:{productId},
+                })
+                getBasket()
+
+          
+            setSuccess("Added to Basket")
+            } catch(error){
+                console.log("ERROR:",error)
+                console.log(user)
+            }
+            
+            
         }
         
        
     
     function basketTotal(){
-        // const total = basket.length;
-        // console.log(basket.length)
-        // return total
+        const total = basket.length;
+        return total
         
 
     }
     function viewBasket(){
-        console.log("viewBasket")
-        // const listItems = basket.map((number) => <li>{number}</li>);
+       
         
     }
-    // useEffect(() => {// in useEffect as only want to run when mount the component 
-    // // const unsubscribe = auth.onAuthStateChanged(user => {
-    // //            
-    // //         setLoading(false)
-    // //     })
-
-    // //     return unsubscribe
-    // }, [])
+    useEffect(() => {// in useEffect as only want to run when mount the component 
+        
+        getBasket()
+    }, [])
     
     const value = {
       addBasket,

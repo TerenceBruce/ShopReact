@@ -6,7 +6,8 @@ import {
     Nav , Navbar , 
     // NavDropdown ,
     // NavLink,
-    Offcanvas } from 'react-bootstrap'
+    Offcanvas,
+  Alert } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
 import { useBasket } from '../contexts/BasketContext';
 import Logout from './Logout';
@@ -18,7 +19,8 @@ export default function TestNavbar() {
 
  
 const { currentUser }=useAuth()
-const { viewBasket, basketTotal } = useBasket();
+const { viewBasket, basketTotal,success } = useBasket();
+
 
     return ["xxxl"].map((expand) => (
       <Navbar
@@ -34,7 +36,7 @@ const { viewBasket, basketTotal } = useBasket();
           <Navbar.Brand  href="/">
             Terry's App
           </Navbar.Brand>
-          <Button onClick={() => viewBasket()}>View Basket {basketTotal()}</Button>
+          <Button onClick={() => viewBasket()}>View Basket {basketTotal()} {success && <Alert variant="success">{success}</Alert>}</Button>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
