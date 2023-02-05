@@ -16,36 +16,47 @@ export function BasketProvider({ children }) {
     const [success,setSuccess]= useState(null)
     const [loading, setLoading] =useState(false)
     const [basket,setBasket] =useState([])
-    const user = currentUser.uid
+    
 
     
 
     async function getBasket(){
         setLoading(true)
         setBasket([])
-       
-        const q = query(collection(db, "UserBasket"), where("user", "==", {user}));
+        if(currentUser){
+        const user = currentUser.uid
+        const q = query(collection(db, user));
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
                     const productid=doc.data().ProductID
                     setBasket(prevArray  => [...prevArray ,productid]);
                 });
                 setLoading(false)
+            }
+            else{
+                console.log("Log in for basket")
+                setLoading(false)}
    
 }
     async function addBasket(productId){
             try{
-                await addDoc(collection(db, "UserBasket/"), {
-                    user:{user},
+                if(currentUser){
+                const user = currentUser.uid
+                const q = query(collection(db, user), where("ProductID", "==", {productId}));
+                const querySnapshot = await getDocs(q);
+                console.log(q)
+                await addDoc(collection(db, user), {
                     ProductID:{productId},
                 })
                 getBasket()
+            }else{
+                setError("Log in for basket")}
 
           
             setSuccess("Added to Basket")
             } catch(error){
                 console.log("ERROR:",error)
-                console.log(user)
+                
             }
             
             
