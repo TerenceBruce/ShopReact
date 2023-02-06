@@ -23,6 +23,7 @@ export function BasketProvider({ children }) {
     async function getBasket(){
         setLoading(true)
         setBasket([])
+        try{
         if(currentUser){
         const user = currentUser.uid
         const q = query(collection(db, user));
@@ -34,8 +35,15 @@ export function BasketProvider({ children }) {
                 setLoading(false)
             }
             else{
-                console.log("Log in for basket")
-                setLoading(false)}
+                setError("Log in for basket")}
+
+          
+            setSuccess("Added to Basket")
+            } catch(error){
+                console.log("ERROR:",error)
+                setLoading(false)
+                
+            }
    
 }
     async function addBasket(productId){
