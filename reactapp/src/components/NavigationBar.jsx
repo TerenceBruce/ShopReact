@@ -13,13 +13,14 @@ import { useBasket } from '../contexts/BasketContext';
 import Logout from './Logout';
 import { useLocation, Link } from 'react-router-dom';
 import '../css/navbar.css';
+import ViewBasket from './ViewBasket';
 
 
 export default function TestNavbar() {
 
  
 const { currentUser }=useAuth()
-const { viewBasket, basketTotal,success } = useBasket();
+const { success } = useBasket();
 
 
     return ["xxxl"].map((expand) => (
@@ -36,7 +37,7 @@ const { viewBasket, basketTotal,success } = useBasket();
           <Navbar.Brand  href="/">
             Terry's App
           </Navbar.Brand>
-          <Button onClick={() => viewBasket()}>View Basket {basketTotal()} {success && <Alert variant="success">{success}</Alert>}</Button>
+          <ViewBasket/>  {success && <Alert variant="success">{success}</Alert>}
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}

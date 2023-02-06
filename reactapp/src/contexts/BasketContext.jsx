@@ -79,13 +79,15 @@ export function BasketProvider({ children }) {
 
     }
     function viewBasket(){
-       
+        
+   
+
         
     }
     useEffect(() => {// in useEffect as only want to run when mount the component 
         
         getBasket()
-    }, [])
+    },[])
     
     const value = {
       addBasket,

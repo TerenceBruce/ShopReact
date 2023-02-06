@@ -1,0 +1,24 @@
+.modal {
+   position: fixed;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    transform: translate(0);
+    border: 3px solid rgb(3, 39, 56);
+    padding: 10px;
+    background: rgb(171, 209, 224);
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(174, 0, 255);
+  background-image: linear-gradient(
+    130deg,#000000,
+    #000000 41.07%,
+    #000000 76.05%
+  );
+  opacity: 0.5;
+}
