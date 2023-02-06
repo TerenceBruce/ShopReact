@@ -36,7 +36,7 @@ export function BasketProvider({ children }) {
             }
             else{
                 setError("Log in for basket")}
-
+                setLoading(false)
           
             setSuccess("Added to Basket")
             } catch(error){
