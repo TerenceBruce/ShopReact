@@ -4,6 +4,8 @@ import React, { createContext,useContext, useState,
 import {db} from '../firebase';
 import {addDoc, collection, setDoc,getDocs, where,query } from "firebase/firestore";
 import { useAuth } from "../contexts/AuthContext"
+import { useProducts } from "../contexts/ProductsContext"
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 const BasketContext = createContext()
 
 export function useBasket(){
@@ -12,11 +14,12 @@ export function useBasket(){
 
 export function BasketProvider({ children }) {
     const { currentUser }=useAuth()
+    const { products } = useProducts();
     const [error,setError]= useState(null)
     const [success,setSuccess]= useState(null)
     const [loading, setLoading] =useState(false)
     const [basket,setBasket] =useState([])
-    
+    const [quantity, setQuantity] = useState({});
 
     
 
@@ -78,12 +81,29 @@ export function BasketProvider({ children }) {
         
 
     }
-    function viewBasket(){
+   function viewBasket(){
+  return (
+    <ul>
+      {basket.reduce((groupedItems, item) => {
+        const { productId } = item;
+        const product = products.find((product) => product.id === productId);
+        const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId);
         
-   
+        if (groupedItem) {
+          groupedItem.quantity++;
+        } else {
+          groupedItems.push({ product, quantity: 1 });
+        }
 
-        
-    }
+        return groupedItems;
+      }, []).map(({ product, quantity }) => (
+        <li key={product.id}>
+          {product.ProductName} - {product.ProductPrice} x {quantity}
+        </li>
+      ))}
+    </ul>
+  );
+}
     useEffect(() => {// in useEffect as only want to run when mount the component 
         
         getBasket()
