@@ -78,7 +78,7 @@ export default function WriteDatabase() {
             </Form.Group>
             <Form.Group id="ProductPrice">
               <Form.Label> Price</Form.Label>
-              <Form.Control type="price" ref={productPrice} required />
+              <Form.Control type="number" step="0.01" ref={productPrice} required />
             </Form.Group>
             <Button className="w-100 text-center mt-2" type="submit">
               Add Product

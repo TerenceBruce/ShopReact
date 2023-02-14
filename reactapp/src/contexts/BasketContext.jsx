@@ -55,7 +55,6 @@ export function BasketProvider({ children }) {
                 const user = currentUser.uid
                 const q = query(collection(db, user), where("ProductID", "==", {productId}));
                 const querySnapshot = await getDocs(q);
-                console.log(q)
                 await addDoc(collection(db, user), {
                     ProductID:{productId},
                 })
@@ -81,10 +80,8 @@ export function BasketProvider({ children }) {
         
 
     }
-   function viewBasket(){
-  return (
-    <ul>
-      {basket.reduce((groupedItems, item) => {
+    function viewBasket(){
+      const groupedItems = basket.reduce((groupedItems, item) => {
         const { productId } = item;
         const product = products.find((product) => product.id === productId);
         const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId);
@@ -94,16 +91,29 @@ export function BasketProvider({ children }) {
         } else {
           groupedItems.push({ product, quantity: 1 });
         }
-
+        
+        
         return groupedItems;
-      }, []).map(({ product, quantity }) => (
-        <li key={product.id}>
-          {product.ProductName} - {product.ProductPrice} x {quantity}
-        </li>
-      ))}
-    </ul>
-  );
-}
+      }, []);
+    
+      const totalPrice = groupedItems.reduce((total, { product, quantity }) => {
+
+        return total + (product.ProductPrice * quantity);
+      }, 0);
+    
+      return (
+        <div>
+          <ul>
+            {groupedItems.map(({ product, quantity }) => (
+              <li key={product.id}>
+                {product.ProductName} - £{product.ProductPrice} x {quantity}
+              </li>
+            ))}
+          </ul>
+          <p>Total Price: £{totalPrice}</p>
+        </div>
+      );
+    }
     useEffect(() => {// in useEffect as only want to run when mount the component 
         
         getBasket()
