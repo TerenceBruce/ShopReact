@@ -7,30 +7,58 @@ import '../css/home.css';
 export default function Home() {
     
   return (
-    <div>
-      <ProductList />
-      <Card>
-       Priorty:
-       <ol className="list">
-       <li className="list-item one">useState(Basket) delete on refresh</li>
-       <li className="list-item two">viewBasket model</li>
-       <li className="list-item three"></li>
-       </ol>
-      </Card>
-      <Card>
-        CSS:
-        <ol className="list">
-        <li className="list-item one">light and dark feature</li>
-        <li className="list-item two" >Navigation styling with hover and cleaner look</li>
-        </ol>
-      </Card>
-      <Card>
-      <ol className="list">
-        Extra Features:
-        <li className="list-item one">Profile picture upload</li>
-        <li className="list-item two">use diffrent than create react app possibly vite?</li>
-        </ol>
-      </Card>
-    </div>
+    
+    <div class="container">
+      
+      <ProductList/>
+     
+
+          
+
+         
+  <div class="row">
+
+          <div class="col">
+
+            <div class="box" >Prev
+            </div>
+
+          </div>
+
+        <div class="col ">
+        
+            <div class="box">
+                    Next
+            </div>
+
+        </div>
+
+        <div class="col">
+        
+          <div class="box">
+                   3
+          </div>
+
+        </div>
+      <div class="col">
+        
+          <div class="box">
+                   4
+          </div>
+    
+      </div>
+      <div class="col">
+        
+          <div class="box">
+                   5
+          </div>
+
+        </div>
+      
+  </div>
+
+</div>
+  
+    
   );
 }

@@ -27,11 +27,10 @@ import {
 
 function App(){ 
   return (
-    <Container
-      className="d-flex align-items-center justify-cintent-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+    <div class="container"
+      className="d-flex align-items-center justify-cintent-center">
+        
+      <div className="w-100" >
         <AuthProvider>
         
           <ProductsProvider>
@@ -72,7 +71,7 @@ function App(){
           
         </AuthProvider>
       </div>
-    </Container>
+    </div>
   );
 
   }

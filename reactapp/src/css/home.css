@@ -1,3 +1,9 @@
+.box {
+  background-color: rgb(80, 174, 206);
+  border: 1px solid rgb(243, 0, 0);
+  min-height: 50px;
+  font-size: 2rem;
+}
 ol {
     counter-reset: item;
     list-style-type: none;
@@ -29,5 +35,16 @@ ol {
     border-radius: 2em;
     font-weight: 700;
   }
- 
+  div.polaroid {
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  img {width: 100%}
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
       
