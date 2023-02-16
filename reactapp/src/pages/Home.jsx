@@ -8,7 +8,7 @@ export default function Home() {
     
   return (
     
-    <div class="container">
+    <div className="container">
       
       <ProductList/>
      
@@ -16,40 +16,40 @@ export default function Home() {
           
 
          
-  <div class="row">
+  <div className="row">
 
-          <div class="col">
+          <div className="col">
 
-            <div class="box" >Prev
+            <div className="box" >Prev
             </div>
 
           </div>
 
-        <div class="col ">
+        <div className="col ">
         
-            <div class="box">
+            <div className="box">
                     Next
             </div>
 
         </div>
 
-        <div class="col">
+        <div className="col">
         
-          <div class="box">
+          <div className="box">
                    3
           </div>
 
         </div>
-      <div class="col">
+      <div className="col">
         
-          <div class="box">
+          <div className="box">
                    4
           </div>
     
       </div>
-      <div class="col">
+      <div className="col">
         
-          <div class="box">
+          <div className="box">
                    5
           </div>
 

@@ -12,6 +12,7 @@ import UpdateProfile from "./UpdateProfile";
 import NavigationBar from "./NavigationBar";
 import Admin from "../pages/Admin";
 import ProductPage from "./ProductPage";
+import Payment from "./Payment"
 //contexts
 import { AuthProvider } from "../contexts/AuthContext"
 import { ProductsProvider } from "../contexts/ProductsContext";
@@ -22,13 +23,18 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+//stripe payment
+import { Elements } from "@stripe/react-stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
 
 
 
 function App(){ 
+  const stripePromise = loadStripe(
+    "pk_live_51Mc88OKvwrA3TKTQyT993oQxcZ4AmORNQd9TYUu3CqUunmnEuC5LwWTAnxFGnG9XmEVGJvS3RP6XUs91sTzlRcsj008kT7OTmX"
+  );
   return (
-    <div class="container"
-      className="d-flex align-items-center justify-cintent-center">
+    <div className="d-flex align-items-center justify-cintent-center">
         
       <div className="w-100" >
         <AuthProvider>
@@ -64,6 +70,12 @@ function App(){
                 <Route path="/ForgotPassword" element={<ForgotPassword />} />
                 <Route path="/Admin/AddProduct" element={<Admin />} />
                 <Route path="/products/:id" element={<ProductPage/>} />
+                <Route path="/payment" element={<Elements stripe={stripePromise}>
+                <Payment />
+              </Elements>
+            
+          }
+        />
               </Routes>
             </Router>
             </BasketProvider>

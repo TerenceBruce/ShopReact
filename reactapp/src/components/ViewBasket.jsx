@@ -1,6 +1,9 @@
 import {React,useState} from 'react'
+import CurrencyFormat from "react-currency-format";
 import "../css/MyModal.css"
-import { Modal, Button } from 'react-bootstrap';
+import { Modal,
+  //  Button
+   } from 'react-bootstrap';
 import { useBasket } from '../contexts/BasketContext';
 
 export default function ViewBasket() {
@@ -8,7 +11,7 @@ export default function ViewBasket() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { basketTotal,viewBasket } = useBasket();
+    const { basketTotal,viewBasket,basketTotalPrice } = useBasket();
     
     return (
       <>
@@ -28,6 +31,15 @@ export default function ViewBasket() {
           </Modal.Header>
           <Modal.Body>
             {viewBasket()}
+            <CurrencyFormat
+                  renderText={(value) => <h3>Order Total :{value}</h3>}
+                  decimalScale={2}
+                  value={basketTotalPrice()}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"£"}
+                />
+   
           </Modal.Body>
           <Modal.Footer>
             <button variant="secondary" onClick={handleClose}>

@@ -3,8 +3,8 @@ import React, { createContext,useContext, useState,
 } from "react";
 import {db} from '../firebase';
 import {addDoc, collection, setDoc,getDocs, where,query } from "firebase/firestore";
-import { useAuth } from "../contexts/AuthContext"
-import { useProducts } from "../contexts/ProductsContext"
+import { useAuth } from "./AuthContext"
+import { useProducts } from "./ProductsContext"
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 const BasketContext = createContext()
 
@@ -34,8 +34,11 @@ export function BasketProvider({ children }) {
                 querySnapshot.forEach((doc) => {
                     const productid=doc.data().ProductID
                     setBasket(prevArray  => [...prevArray ,productid]);
+                    
                 });
                 setLoading(false)
+                
+                
             }
             else{
                 setError("Log in for basket")}
@@ -72,8 +75,28 @@ export function BasketProvider({ children }) {
             
         }
         
-       
+    function basketTotalPrice(){
+      const groupedItems = basket.reduce((groupedItems, item) => {
+        const { productId } = item;
+        const product = products.find((product) => product.id === productId);
+        const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId);
+        
+        if (groupedItem) {
+          groupedItem.quantity++;
+        } else {
+          groupedItems.push({ product, quantity: 1 });
+        }
+        
+        
+        return groupedItems;
+      }, []);
+      const totalPrice = groupedItems.reduce((total, { product, quantity }) => {
+
+        return total + (product.ProductPrice * quantity);
+      }, 0);
+      return totalPrice
     
+    }
     function basketTotal(){
         const total = basket.length;
         return total
@@ -96,11 +119,7 @@ export function BasketProvider({ children }) {
         return groupedItems;
       }, []);
     
-      const totalPrice = groupedItems.reduce((total, { product, quantity }) => {
-
-        return total + (product.ProductPrice * quantity);
-      }, 0);
-    
+     
       return (
         <div>
           <ul>
@@ -110,7 +129,7 @@ export function BasketProvider({ children }) {
               </li>
             ))}
           </ul>
-          <p>Total Price: £{totalPrice}</p>
+         
         </div>
       );
     }
@@ -122,7 +141,9 @@ export function BasketProvider({ children }) {
     const value = {
       addBasket,
       viewBasket,
-      basketTotal
+      basketTotal,
+      basketTotalPrice,
+      getBasket
     };
 
     //passing in value then render the children and loading 

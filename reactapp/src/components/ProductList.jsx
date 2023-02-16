@@ -28,7 +28,7 @@ const ProductsList = () => {
             setLoading(false);
           })
           .catch((error) => {
-            console.log(error);
+            setError(error);
             setLoading(false);
             
           });
@@ -51,10 +51,12 @@ const ProductsList = () => {
   return (
     <Row>
       {products.map((product) => (
+
         <Col sm={12} md={6} lg={4}>
-          <Card>
+          <Card >
             {urls[product.id] && (
               <Card.Img
+              
                 src={urls[product.id]}
                 variant="top"
                 alt={product.ProductName}
@@ -78,6 +80,7 @@ const ProductsList = () => {
             </Card.Body>
           </Card>
         </Col>
+       
       ))}
     </Row>
   );
