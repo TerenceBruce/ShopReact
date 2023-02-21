@@ -2,7 +2,16 @@ import React, { createContext,useContext, useState,
    useEffect 
 } from "react";
 import {db} from '../firebase';
-import {addDoc, collection, setDoc,getDocs, where,query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  setDoc,
+  getDocs,
+  where,
+  query,
+  deleteDoc,
+} from "firebase/firestore";
 import { useAuth } from "./AuthContext"
 import { useProducts } from "./ProductsContext"
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -103,6 +112,29 @@ export function BasketProvider({ children }) {
         
 
     }
+      async function deleteItem(productId) {
+        try {
+          if (currentUser) {
+            console.log(productId)
+            const user = currentUser.uid;
+            const q = query(
+              collection(db, user),
+              where("ProductID", "==", { productId })
+            );
+            const querySnapshot = await getDocs(q);
+            await deleteDoc(doc(db, user), {
+              ProductID: { productId },
+            });
+            getBasket();
+          } else {
+            setError("Log in for basket");
+          }
+
+          setSuccess("Deleted from basket");
+        } catch (error) {
+          console.log("ERROR:", error);
+        }
+      }
     function viewBasket(){
       const groupedItems = basket.reduce((groupedItems, item) => {
         const { productId } = item;
@@ -126,10 +158,12 @@ export function BasketProvider({ children }) {
             {groupedItems.map(({ product, quantity }) => (
               <li key={product.id}>
                 {product.ProductName} - £{product.ProductPrice} x {quantity}
+                <button onClick={() => deleteItem(product.id)}>
+                 Delete
+                </button>
               </li>
             ))}
           </ul>
-         
         </div>
       );
     }
