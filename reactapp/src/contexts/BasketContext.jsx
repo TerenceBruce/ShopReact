@@ -117,14 +117,15 @@ export function BasketProvider({ children }) {
           if (currentUser) {
             console.log(productId)
             const user = currentUser.uid;
+           
             const q = query(
               collection(db, user),
               where("ProductID", "==", { productId })
             );
             const querySnapshot = await getDocs(q);
-            await deleteDoc(doc(db, user), {
-              ProductID: { productId },
-            });
+             querySnapshot.forEach((doc) => {
+               deleteDoc(doc.ref); // and not doc.data()
+             });
             getBasket();
           } else {
             setError("Log in for basket");
