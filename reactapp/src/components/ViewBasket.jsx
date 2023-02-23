@@ -5,6 +5,7 @@ import { Modal,
   //  Button
    } from 'react-bootstrap';
 import { useBasket } from '../contexts/BasketContext';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function ViewBasket() {
     const [show, setShow] = useState(false);
@@ -12,7 +13,9 @@ export default function ViewBasket() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { basketTotal,viewBasket,basketTotalPrice } = useBasket();
+    const {currentUser} =useAuth();
     
+    if (currentUser!==null) {
     return (
       <>
         <button variant="primary" onClick={handleShow}>
@@ -48,6 +51,6 @@ export default function ViewBasket() {
           </Modal.Footer>
         </Modal>
       </>
-    );
+    )}
 }
 

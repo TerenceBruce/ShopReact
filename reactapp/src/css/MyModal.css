@@ -5,19 +5,9 @@
     width: 50%;
     border: 3px solid rgb(3, 39, 56);
     padding: 10px;
-    background: rgb(171, 209, 224);
-}
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(174, 0, 255);
-  background-image: linear-gradient(
-    130deg,#000000,
-    #000000 41.07%,
-    #000000 76.05%
+     background-image: linear-gradient(
+    130deg,#960ad27c,
+    #960ad27c 41.07%,
+    #960ad27c 76.05%
   );
-  opacity: 0.5;
 }
