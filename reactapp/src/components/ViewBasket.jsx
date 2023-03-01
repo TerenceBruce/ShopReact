@@ -42,9 +42,9 @@ export default function ViewBasket() {
                   thousandSeparator={true}
                   prefix={"£"}
                 />
-          <form action="/create-checkout-session" method="post">
+          {/* <form action="/create-checkout-session" method="post">
             <button type="submit" id="checkout-button" class="btn btn-primary">Checkout</button>
-            </form>
+            </form> */}
           </Modal.Body>
           <Modal.Footer>
             <button variant="secondary" onClick={handleClose}>

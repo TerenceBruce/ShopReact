@@ -24,13 +24,13 @@ import {
   Route
 } from "react-router-dom";
 //stripe payment
-import { Elements } from "@stripe/react-stripe-js"
-import { loadStripe } from "@stripe/stripe-js";
+// import { Elements } from "@stripe/react-stripe-js"
+// import { loadStripe } from "@stripe/stripe-js";
 
 
 
 function App(){ 
- 
+
   return (
     <div className="d-flex align-items-center justify-cintent-center">
         
