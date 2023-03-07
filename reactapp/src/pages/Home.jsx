@@ -20,7 +20,7 @@ export default function Home() {
 
           <div className="col">
 
-            <div className="box" >Prev
+            <div className="box" >1
             </div>
 
           </div>
@@ -28,7 +28,7 @@ export default function Home() {
         <div className="col ">
         
             <div className="box">
-                    Next
+                    2
             </div>
 
         </div>
