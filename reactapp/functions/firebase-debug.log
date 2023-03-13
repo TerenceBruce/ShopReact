@@ -1,0 +1,430 @@
+[debug] [2023-03-13T10:24:55.673Z] ----------------------------------------------------------------------
+[debug] [2023-03-13T10:24:55.675Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Terry\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-03-13T10:24:55.675Z] CLI Version:   11.24.1
+[debug] [2023-03-13T10:24:55.675Z] Platform:      win32
+[debug] [2023-03-13T10:24:55.675Z] Node Version:  v17.6.0
+[debug] [2023-03-13T10:24:55.676Z] Time:          Mon Mar 13 2023 10:24:55 GMT+0000 (Greenwich Mean Time)
+[debug] [2023-03-13T10:24:55.676Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-13T10:24:55.732Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2023-03-13T10:24:55.733Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"rewrites"}
+[debug] [2023-03-13T10:24:55.733Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-03-13T10:24:55.736Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-13T10:24:55.737Z] > authorizing via signed-in user (terrybruce123456@gmail.com)
+[debug] [2023-03-13T10:24:55.737Z] [iam] checking project reactapp-d41d0 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-03-13T10:24:55.739Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions [none]
+[debug] [2023-03-13T10:24:55.739Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions x-goog-quota-user=projects/reactapp-d41d0
+[debug] [2023-03-13T10:24:55.739Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-03-13T10:24:56.470Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions 200
+[debug] [2023-03-13T10:24:56.471Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-03-13T10:24:56.471Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/reactapp-d41d0/serviceAccounts/reactapp-d41d0@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-03-13T10:24:56.471Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/reactapp-d41d0/serviceAccounts/reactapp-d41d0@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-13T10:24:56.733Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/reactapp-d41d0/serviceAccounts/reactapp-d41d0@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-03-13T10:24:56.733Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/reactapp-d41d0/serviceAccounts/reactapp-d41d0@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'reactapp-d41d0'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] +  functions: Finished running predeploy script. 
+[debug] [2023-03-13T10:24:58.172Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0 [none]
+[debug] [2023-03-13T10:24:58.424Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0 200
+[debug] [2023-03-13T10:24:58.424Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0 {"projectId":"reactapp-d41d0","projectNumber":"1070373665336","displayName":"reactapp-Development","name":"projects/reactapp-d41d0","resources":{"hostingSite":"reactapp-d41d0","realtimeDatabaseInstance":"reactapp-d41d0-default-rtdb","storageBucket":"reactapp-d41d0.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_34d722aa-5967-4cc5-becb-d1f9aca0c4b9"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-03-13T10:24:58.426Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-03-13T10:24:58.426Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/reactapp-d41d0
+[debug] [2023-03-13T10:24:58.427Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-03-13T10:24:58.427Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/reactapp-d41d0
+[debug] [2023-03-13T10:24:58.428Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudbuild.googleapis.com [none]
+[debug] [2023-03-13T10:24:58.429Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudbuild.googleapis.com x-goog-quota-user=projects/reactapp-d41d0
+[debug] [2023-03-13T10:24:58.430Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/artifactregistry.googleapis.com [none]
+[debug] [2023-03-13T10:24:58.430Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/artifactregistry.googleapis.com x-goog-quota-user=projects/reactapp-d41d0
+[debug] [2023-03-13T10:24:59.234Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/artifactregistry.googleapis.com 200
+[debug] [2023-03-13T10:24:59.234Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-03-13T10:24:59.250Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudbuild.googleapis.com 200
+[debug] [2023-03-13T10:24:59.250Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-03-13T10:24:59.251Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/runtimeconfig.googleapis.com 200
+[debug] [2023-03-13T10:24:59.251Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-03-13T10:24:59.279Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudfunctions.googleapis.com 200
+[debug] [2023-03-13T10:24:59.279Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/reactapp-d41d0/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-03-13T10:24:59.280Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0/adminSdkConfig [none]
+[debug] [2023-03-13T10:24:59.535Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0/adminSdkConfig 200
+[debug] [2023-03-13T10:24:59.535Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0/adminSdkConfig {"projectId":"reactapp-d41d0","databaseURL":"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"reactapp-d41d0.appspot.com","locationId":"europe-west2"}
+[debug] [2023-03-13T10:24:59.535Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs [none]
+[debug] [2023-03-13T10:24:59.797Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs 200
+[debug] [2023-03-13T10:24:59.797Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs {"configs":[{"name":"projects/reactapp-d41d0/configs/stripe"}]}
+[debug] [2023-03-13T10:24:59.797Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs/stripe/variables [none]
+[debug] [2023-03-13T10:25:00.018Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs/stripe/variables 200
+[debug] [2023-03-13T10:25:00.018Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs/stripe/variables {"variables":[{"name":"projects/reactapp-d41d0/configs/stripe/variables/secret_key","updateTime":"2023-02-16T19:19:51.257670096Z"}]}
+[debug] [2023-03-13T10:25:00.018Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs/stripe/variables/secret_key [none]
+[debug] [2023-03-13T10:25:00.312Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs/stripe/variables/secret_key 200
+[debug] [2023-03-13T10:25:00.312Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/reactapp-d41d0/configs/stripe/variables/secret_key {"name":"projects/reactapp-d41d0/configs/stripe/variables/secret_key","updateTime":"2023-02-16T19:19:51.257670096Z","text":"sk_test_51Mc88OKvwrA3TKTQRz4jMoqdMgGMSEal5SIzyhanhVlPJQg6NwOHh71fW6w8lyWoyUOAhevbEn7jQuVvLkQcJwTc00hg7BVwhS"}
+[debug] [2023-03-13T10:25:00.314Z] Validating nodejs source
+[debug] [2023-03-13T10:25:01.220Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.3.0",
+    "firebase-functions": "^4.2.1",
+    "node": "^19.6.1",
+    "stripe": "^11.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-13T10:25:01.220Z] Building nodejs source
+[debug] [2023-03-13T10:25:01.221Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-13T10:25:01.230Z] Found firebase-functions binary at 'C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-03-13T10:25:01.394Z] Serving at port 8028
+
+[debug] [2023-03-13T10:25:01.643Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-13T10:25:01.648Z] shutdown requested via /__/quitquitquit
+
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions (90.01 KB) for uploading 
+[debug] [2023-03-13T10:25:01.693Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/-/functions [none]
+[debug] [2023-03-13T10:25:02.190Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/-/functions 200
+[debug] [2023-03-13T10:25:02.190Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/-/functions {}
+[debug] [2023-03-13T10:25:02.190Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/reactapp-d41d0/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-03-13T10:25:02.711Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/reactapp-d41d0/locations/-/functions 200
+[debug] [2023-03-13T10:25:02.711Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/reactapp-d41d0/locations/-/functions {}
+[debug] [2023-03-13T10:25:02.718Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0 [none]
+[debug] [2023-03-13T10:25:02.948Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0 200
+[debug] [2023-03-13T10:25:02.948Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0 {"projectId":"reactapp-d41d0","projectNumber":"1070373665336","displayName":"reactapp-Development","name":"projects/reactapp-d41d0","resources":{"hostingSite":"reactapp-d41d0","realtimeDatabaseInstance":"reactapp-d41d0-default-rtdb","storageBucket":"reactapp-d41d0.appspot.com","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_34d722aa-5967-4cc5-becb-d1f9aca0c4b9"}
+[debug] [2023-03-13T10:25:02.949Z] [functions] found 1 new HTTP functions, testing setIamPolicy permission...
+[debug] [2023-03-13T10:25:02.949Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions [none]
+[debug] [2023-03-13T10:25:02.949Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions x-goog-quota-user=projects/reactapp-d41d0
+[debug] [2023-03-13T10:25:02.949Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2023-03-13T10:25:03.551Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions 200
+[debug] [2023-03-13T10:25:03.552Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/reactapp-d41d0:testIamPermissions {"permissions":["cloudfunctions.functions.setIamPolicy"]}
+[debug] [2023-03-13T10:25:03.552Z] [functions] found setIamPolicy permission, proceeding with deploy
+[debug] [2023-03-13T10:25:03.552Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-03-13T10:25:03.552Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-03-13T10:25:04.063Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-03-13T10:25:04.063Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D"}
+[debug] [2023-03-13T10:25:04.064Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip GoogleAccessId=service-1070373665336%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D
+[debug] [2023-03-13T10:25:04.064Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip [stream]
+[debug] [2023-03-13T10:25:04.342Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip 200
+[debug] [2023-03-13T10:25:04.342Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip [omitted]
+[info] +  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 16 function helloWorld(us-central1)... 
+[debug] [2023-03-13T10:25:04.345Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions [none]
+[debug] [2023-03-13T10:25:04.345Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions {"name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","entryPoint":"helloWorld","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null}
+[debug] [2023-03-13T10:25:04.985Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions 200
+[debug] [2023-03-13T10:25:04.985Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/reactapp-d41d0/locations/us-central1/functions {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:03Z"}}
+[debug] [2023-03-13T10:25:04.986Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:05.207Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:05.207Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z"}}
+[debug] [2023-03-13T10:25:05.714Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:05.714Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:05.937Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:05.937Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z"}}
+[debug] [2023-03-13T10:25:06.940Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:06.940Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:07.162Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:07.162Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z"}}
+[debug] [2023-03-13T10:25:09.171Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:09.171Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:09.374Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:09.374Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z"}}
+[debug] [2023-03-13T10:25:13.379Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:13.380Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:13.604Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:13.604Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z"}}
+[debug] [2023-03-13T10:25:21.607Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:21.607Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:21.813Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:21.814Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z","buildId":"cb28faf2-bf83-4fd2-ab11-b1ab752ff149","buildName":"projects/1070373665336/locations/us-central1/builds/cb28faf2-bf83-4fd2-ab11-b1ab752ff149"}}
+[debug] [2023-03-13T10:25:31.819Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:31.819Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:32.038Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:32.038Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z","buildId":"cb28faf2-bf83-4fd2-ab11-b1ab752ff149","buildName":"projects/1070373665336/locations/us-central1/builds/cb28faf2-bf83-4fd2-ab11-b1ab752ff149"}}
+[debug] [2023-03-13T10:25:42.045Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:42.046Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:42.244Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:42.244Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z","buildId":"cb28faf2-bf83-4fd2-ab11-b1ab752ff149","buildName":"projects/1070373665336/locations/us-central1/builds/cb28faf2-bf83-4fd2-ab11-b1ab752ff149"}}
+[debug] [2023-03-13T10:25:52.252Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:25:52.252Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:25:52.458Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:25:52.458Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:04Z","buildId":"cb28faf2-bf83-4fd2-ab11-b1ab752ff149","buildName":"projects/1070373665336/locations/us-central1/builds/cb28faf2-bf83-4fd2-ab11-b1ab752ff149"}}
+[debug] [2023-03-13T10:26:02.468Z] [create-default-us-central1-helloWorld] Retrying task index 0
+[debug] [2023-03-13T10:26:02.468Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ [none]
+[debug] [2023-03-13T10:26:02.685Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ 200
+[debug] [2023-03-13T10:26:02.685Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ {"name":"operations/cmVhY3RhcHAtZDQxZDAvdXMtY2VudHJhbDEvaGVsbG9Xb3JsZC9fR0VodE8yOHFGWQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld","httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"entryPoint":"helloWorld","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"37643d919998d60a75de479b658ee7f1c0f5183c"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-306332639964.us-central1.cloudfunctions.appspot.com/ddc9e1d5-54ec-4f12-b544-bbd698e6782e.zip?GoogleAccessId=service-1070373665336@gcf-admin-robot.iam.gserviceaccount.com&Expires=1678704903&Signature=TMJrC2Wziv3y5CGi3xOY3BuDpMXpV3BHkzDi0B3Kjykw8ZmG7WzatLqBPcFZwj2CakLMQ5f4t8Wco9XcMwgc%2BsZGVnQfbejMQ9wx6Hor%2FU4m8u359xHaQxYi4rEWhhLjjK1oDWTfeoFtGtEDx5C6g37vr%2FqFnVtiAimpDPhP%2BzCV2UwNNol2BVj3jzNYH7vMvLipEuvj1%2BgicG2zLDE9A5Qc8W4q5WSFwV25OpzT3aR8e3hkrCy%2B9OUam11%2BbWEZtWmdNxiasIuot6NzAU56Zx6uTkajUOxIFC5%2BW3PlMAzsAOCO9HWr%2FnITyO83Q49vqpz7BJXGRoQFpll9QI3QHA%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"reactapp-d41d0","EVENTARC_CLOUD_EVENT_SOURCE":"projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"},"runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY"},"versionId":"1","updateTime":"2023-03-13T10:25:51Z","buildId":"cb28faf2-bf83-4fd2-ab11-b1ab752ff149","buildName":"projects/1070373665336/locations/us-central1/builds/cb28faf2-bf83-4fd2-ab11-b1ab752ff149"},"done":true,"error":{"code":13,"message":"Build failed: node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by node); Error ID: 653c7ba4"}}
+[debug] [2023-03-13T10:26:02.686Z] Got source token undefined for region us-central1
+[error] Build failed: node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by node); Error ID: 653c7ba4
+[debug] [2023-03-13T10:26:02.693Z] Total Function Deployment time: 58346
+[debug] [2023-03-13T10:26:02.693Z] 1 Functions Deployed
+[debug] [2023-03-13T10:26:02.693Z] 1 Functions Errored
+[debug] [2023-03-13T10:26:02.694Z] 0 Function Deployments Aborted
+[debug] [2023-03-13T10:26:02.694Z] Average Function Deployment time: 58345
+[info] 
+[info] Functions deploy had errors with the following functions:
+	helloWorld(us-central1)
+[debug] [2023-03-13T10:26:02.761Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[info] i  functions: cleaning up build files... 
+[debug] [2023-03-13T10:26:02.763Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/reactapp-d41d0/locations/us-central1/repositories/gcf-artifacts/packages/hello_world [none]
+[debug] [2023-03-13T10:26:02.764Z] >>> [apiv2][query] GET https://us.gcr.io/v2/reactapp-d41d0/gcf/us-central1/tags/list [none]
+[debug] [2023-03-13T10:26:03.496Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/reactapp-d41d0/locations/us-central1/repositories/gcf-artifacts/packages/hello_world 404
+[debug] [2023-03-13T10:26:03.496Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/reactapp-d41d0/locations/us-central1/repositories/gcf-artifacts/packages/hello_world {"error":{"code":404,"message":"Package \"projects/reactapp-d41d0/locations/us-central1/repositories/gcf-artifacts/packages/hello_world\" was not found.","status":"NOT_FOUND"}}
+[debug] [2023-03-13T10:26:04.055Z] <<< [apiv2][status] GET https://us.gcr.io/v2/reactapp-d41d0/gcf/us-central1/tags/list 200
+[debug] [2023-03-13T10:26:04.055Z] <<< [apiv2][body] GET https://us.gcr.io/v2/reactapp-d41d0/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"reactapp-d41d0/gcf/us-central1","tags":[]}
+[debug] [2023-03-13T10:26:04.056Z] Could not find image for function projects/reactapp-d41d0/locations/us-central1/functions/helloWorld
+[debug] [2023-03-13T10:26:04.056Z] Functions deploy failed.
+[debug] [2023-03-13T10:26:04.056Z] {
+  "endpoint": {
+    "id": "helloWorld",
+    "project": "reactapp-d41d0",
+    "region": "us-central1",
+    "entryPoint": "helloWorld",
+    "platform": "gcfv1",
+    "runtime": "nodejs16",
+    "httpsTrigger": {},
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"reactapp-d41d0\",\"databaseURL\":\"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app\",\"storageBucket\":\"reactapp-d41d0.appspot.com\",\"locationId\":\"europe-west2\"}",
+      "GCLOUD_PROJECT": "reactapp-d41d0",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/reactapp-d41d0/locations/us-central1/functions/helloWorld"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "37643d919998d60a75de479b658ee7f1c0f5183c",
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    }
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "exit": 1,
+    "message": "Build failed: node: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.28' not found (required by node); Error ID: 653c7ba4",
+    "status": 13
+  }
+}
+[debug] [2023-03-13T10:26:04.117Z] Error: Failed to create function helloWorld in region us-central1
+    at C:\Users\Terry\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:48:11
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Fabricator.createV1Function (C:\Users\Terry\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:177:32)
+    at async Fabricator.createEndpoint (C:\Users\Terry\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:129:13)
+    at async handle (C:\Users\Terry\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:85:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2023-03-13T10:36:11.809Z] ----------------------------------------------------------------------
+[debug] [2023-03-13T10:36:11.821Z] Command:       C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules\node\bin\node.exe C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2023-03-13T10:36:11.821Z] CLI Version:   11.23.1
+[debug] [2023-03-13T10:36:11.822Z] Platform:      win32
+[debug] [2023-03-13T10:36:11.822Z] Node Version:  v19.6.1
+[debug] [2023-03-13T10:36:11.822Z] Time:          Mon Mar 13 2023 10:36:11 GMT+0000 (Greenwich Mean Time)
+[debug] [2023-03-13T10:36:11.822Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-13T10:36:11.963Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2023-03-13T10:36:11.963Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"rewrites"}
+[debug] [2023-03-13T10:36:11.963Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2023-03-13T10:36:11.974Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-13T10:36:11.975Z] > authorizing via signed-in user (terrybruce123456@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2023-03-13T10:36:11.985Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-13T10:36:11.985Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-03-13T10:36:11.993Z] [hub] writing locator at C:\Users\Terry\AppData\Local\Temp\hub-reactapp-d41d0.json
+[debug] [2023-03-13T10:36:12.004Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-13T10:36:12.004Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-13T10:36:12.004Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2023-03-13T10:36:12.008Z] defaultcredentials: writing to file C:\Users\Terry\AppData\Roaming\firebase\terrybruce123456_gmail_com_application_default_credentials.json
+[debug] [2023-03-13T10:36:12.019Z] Setting GAC to C:\Users\Terry\AppData\Roaming\firebase\terrybruce123456_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Terry\\AppData\\Roaming\\firebase\\terrybruce123456_gmail_com_application_default_credentials.json"}}
+[debug] [2023-03-13T10:36:12.021Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0/adminSdkConfig [none]
+[debug] [2023-03-13T10:36:12.281Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0/adminSdkConfig 200
+[debug] [2023-03-13T10:36:12.282Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reactapp-d41d0/adminSdkConfig {"projectId":"reactapp-d41d0","databaseURL":"https://reactapp-d41d0-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"reactapp-d41d0.appspot.com","locationId":"europe-west2"}
+[info] i  ui: downloading ui-v1.11.4.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.11.4.zip..."}}
+[debug] [2023-03-13T10:36:12.300Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip 
+[debug] [2023-03-13T10:36:12.371Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip 200
+[debug] [2023-03-13T10:36:12.371Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.11.4.zip [stream]
+[debug] [2023-03-13T10:36:15.146Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-13T10:36:15.147Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-13T10:36:15.147Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\Terry\\.cache\\firebase\\emulators\\ui-v1.11.4\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\Terry\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.4\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-13T10:36:15.279Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-13T10:36:15.280Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Terry\\OneDrive\\Documents\\GitHub\\ShopReact\\reactapp\\functions\" for Cloud Functions..."}}
+[debug] [2023-03-13T10:36:15.432Z] Validating nodejs source
+[debug] [2023-03-13T10:36:16.988Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.3.0",
+    "firebase-functions": "^4.2.1",
+    "node": "^19.6.1",
+    "stripe": "^11.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-13T10:36:16.988Z] Building nodejs source
+[debug] [2023-03-13T10:36:16.988Z] Failed to find version of module node: reached end of search path C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules
+[warn] !  functions: Your requested "node" version "16" doesn't match your global version "19". Using node@19 from host. 
+[debug] [2023-03-13T10:36:16.990Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-13T10:36:16.998Z] Found firebase-functions binary at 'C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-03-13T10:36:18.156Z] Serving at port 8955
+
+[debug] [2023-03-13T10:36:20.133Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-13T10:36:20.139Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: helloWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: helloWorld."}}
+[info] +  functions[us-central1-helloWorld]: http function initialized (http://127.0.0.1:5001/reactapp-d41d0/us-central1/helloWorld). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/reactapp-d41d0/us-central1/helloWorld)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-03-13T10:48:23.643Z] File C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\server.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Terry\\OneDrive\\Documents\\GitHub\\ShopReact\\reactapp\\functions\\server.js changed, reloading triggers"}}
+[debug] [2023-03-13T10:48:24.649Z] Validating nodejs source
+[debug] [2023-03-13T10:48:25.599Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.3.0",
+    "firebase-functions": "^4.2.1",
+    "node": "^19.6.1",
+    "stripe": "^11.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-13T10:48:25.599Z] Building nodejs source
+[debug] [2023-03-13T10:48:25.599Z] Failed to find version of module node: reached end of search path C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules
+[warn] !  functions: Your requested "node" version "16" doesn't match your global version "19". Using node@19 from host. 
+[debug] [2023-03-13T10:48:25.601Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-13T10:48:25.608Z] Found firebase-functions binary at 'C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-03-13T10:48:25.790Z] Serving at port 8805
+
+[debug] [2023-03-13T10:48:25.987Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-13T10:48:25.990Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: helloWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: helloWorld."}}
+[debug] [2023-03-13T10:49:30.938Z] File C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\server.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Terry\\OneDrive\\Documents\\GitHub\\ShopReact\\reactapp\\functions\\server.js changed, reloading triggers"}}
+[debug] [2023-03-13T10:49:31.944Z] Validating nodejs source
+[debug] [2023-03-13T10:49:32.868Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.3.0",
+    "firebase-functions": "^4.2.1",
+    "node": "^19.6.1",
+    "stripe": "^11.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-13T10:49:32.868Z] Building nodejs source
+[debug] [2023-03-13T10:49:32.868Z] Failed to find version of module node: reached end of search path C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules
+[warn] !  functions: Your requested "node" version "16" doesn't match your global version "19". Using node@19 from host. 
+[debug] [2023-03-13T10:49:32.869Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-13T10:49:32.876Z] Found firebase-functions binary at 'C:\Users\Terry\OneDrive\Documents\GitHub\ShopReact\reactapp\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-03-13T10:49:33.052Z] Serving at port 8717
+
+[debug] [2023-03-13T10:49:33.262Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-13T10:49:33.265Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: helloWorld. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: helloWorld."}}
