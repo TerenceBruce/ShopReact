@@ -54,38 +54,13 @@ const { success } = useBasket();
                 <ActiveLink to="/">
                   Home
                 </ActiveLink>
-                <CheckUser />
-                
-                {/* {/* <NavDropdown
-                  title="Admin"
-                  id={`offcanvasNavbarDropdown-expand-${expand}`}
-                >
-                  <NavDropdown.Item></NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown> */}
-              
+                <CheckUser />          
           </Nav>
-
-              {/* <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form>{" "}
-              SEARCH OPTION */}
             </Offcanvas.Body> 
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+      
     ));
       
       
