@@ -6,7 +6,7 @@ import { Modal,
    } from 'react-bootstrap';
 import { useBasket } from '../contexts/BasketContext';
 import { useAuth } from '../contexts/AuthContext';
-
+import {  Link } from "react-router-dom";
 export default function ViewBasket() {
     const [show, setShow] = useState(false);
 
@@ -22,7 +22,7 @@ export default function ViewBasket() {
           View basket:
           {basketTotal()}
         </button>
-  
+
         <Modal
           show={show}
           onHide={handleClose}
@@ -35,24 +35,25 @@ export default function ViewBasket() {
           <Modal.Body>
             {viewBasket()}
             <CurrencyFormat
-                  renderText={(value) => <h3>Order Total :{value}</h3>}
-                  decimalScale={2}
-                  value={basketTotalPrice()}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"£"}
-                />
-          {/* <form action="/create-checkout-session" method="post">
+              renderText={(value) => <h3>Order Total :{value}</h3>}
+              decimalScale={2}
+              value={basketTotalPrice()}
+              displayType={"text"}
+              thousandSeparator={true}
+              prefix={"£"}
+            />
+            {/* <form action="/create-checkout-session" method="post">
             <button type="submit" id="checkout-button" class="btn btn-primary">Checkout</button>
             </form> */}
           </Modal.Body>
           <Modal.Footer>
+            <Link to="/Checkout">Checkout</Link>
             <button variant="secondary" onClick={handleClose}>
               Close
             </button>
           </Modal.Footer>
         </Modal>
       </>
-    )}
+    );}
 }
 
