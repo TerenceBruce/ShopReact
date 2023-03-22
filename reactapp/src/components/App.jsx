@@ -13,7 +13,7 @@ import UpdateProfile from "./UpdateProfile";
 import Checkout from "./Checkout";
 // import NavigationBar from "./NavigationBar";
 import Admin from "../pages/Admin";
-import ProductPage from "./ProductPage";
+import Product from "../pages/Product";
 
 //contexts
 import { AuthProvider } from "../contexts/AuthContext"
@@ -74,7 +74,7 @@ function App(){
                   <Route path="/Login" element={<Login />} />
                   <Route path="/ForgotPassword" element={<ForgotPassword />} />
                   <Route path="/Admin/AddProduct" element={<Admin />} />
-                  <Route path="/products/:id" element={<ProductPage />} />
+                  <Route path="/products/:id" element={<Product/>} />
                 </Routes>
               </Router>
             </BasketProvider>
