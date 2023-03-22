@@ -10,7 +10,7 @@ import {
 import { useAuth } from "../contexts/AuthContext"
 import { useBasket } from '../contexts/BasketContext';
 import Logout from './Logout';
-import { useLocation, Link } from 'react-router-dom';
+import ActiveLink from './ActiveLink';
 import '../css/navbar.css';
 import ViewBasket from './ViewBasket';
 
@@ -86,17 +86,7 @@ const { success } = useBasket();
 
     )}
               }
-    function ActiveLink({ children, to }) {//https://ui.dev/react-router-custom-link
-        const location = useLocation();
-        const match = location.pathname === to;
-      
-        return (
-          <div className={match ? "active" : ""}>
-            {match ? "> " : ""}
-            <Link to={to}>{children}</Link>
-          </div>
-        );
-      }
+    
     }
 
   
