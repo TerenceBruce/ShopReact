@@ -67,7 +67,7 @@ const { success } = useBasket();
     else{ return false }
   }
   function UserProfileShortcut() {
-    if (CheckUser===true) { return (
+    if (currentUser!==null) { return (
       <>
         <Navbar.Text>
           asdasd
@@ -78,7 +78,7 @@ const { success } = useBasket();
     else{ return(<></>) }
   }
   function UserNavbarLinks(){
-    if (CheckUser===true) { return (
+    if (currentUser!==null) { return (
       <>
         <ActiveLink to="/Profile">Profile</ActiveLink>
         <ActiveLink to="/Admin/AddProduct">Admin</ActiveLink>
