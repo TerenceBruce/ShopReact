@@ -10,3 +10,11 @@ Steps to run the project-
 
 #####################
 if dont have yarn -   npm install --global yarn
+
+
+#####################
+firebase functions 
+
+cd reactapp
+cd functions
+firebase deploy 
