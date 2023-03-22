@@ -74,7 +74,7 @@ function App(){
                   <Route path="/Login" element={<Login />} />
                   <Route path="/ForgotPassword" element={<ForgotPassword />} />
                   <Route path="/Admin/AddProduct" element={<Admin />} />
-                  <Route path="/products/:id" element={<Product/>} />
+                  <Route path="/Product/:id" element={<Product/>} />
                 </Routes>
               </Router>
             </BasketProvider>
