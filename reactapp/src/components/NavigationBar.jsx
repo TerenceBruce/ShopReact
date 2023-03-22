@@ -21,7 +21,6 @@ export default function TestNavbar() {
 const { currentUser }=useAuth()
 const { success } = useBasket();
 
-
     return ["xxxl"].map((expand) => (
       <Navbar
         fixed="top"
@@ -36,7 +35,9 @@ const { success } = useBasket();
           <Navbar.Brand  href="/">
             Terry's App
           </Navbar.Brand>
-          <ViewBasket/>  {success && <Alert variant="success">{success}</Alert>}
+        
+          
+          <ViewBasket/>{success && <Alert variant="success">{success}</Alert>}
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
@@ -66,7 +67,8 @@ const { success } = useBasket();
       
     function CheckUser(){
 
-        if (currentUser!==null) { return (
+        if (currentUser!==null) {
+          return (
           <>
             <ActiveLink to="/Profile"> Profile</ActiveLink>
             <ActiveLink to="/Admin/AddProduct">Admin</ActiveLink>
@@ -76,8 +78,11 @@ const { success } = useBasket();
             <div className="w-100 text-center mt-2">
               <Logout />
             </div>
+            
           </>
-        );}
+          
+        );
+        }
               else{ return(
                 <>
                 <ActiveLink to="/Login"> Login</ActiveLink>
