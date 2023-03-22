@@ -7,3 +7,6 @@ Steps to run the project-
 #2.yarn install
 #3.cd functions 
 #4.npm install
+
+#####################
+if dont have yarn -   npm install --global yarn
