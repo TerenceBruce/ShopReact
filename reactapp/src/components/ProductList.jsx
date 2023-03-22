@@ -36,27 +36,23 @@ const ProductsList = () => {
     }
   }, []);
 
-   if (products.length===0) {
-     return <p>No products found</p>;
-   }
+  if (products.length===0) {
+    return <p>No products found</p>;
+  }
   if (loading) {
     return <Spinner animation="border" variant="primary" />;
-   
   }
   if (error) {
     return <p>An error occurred: {error.message}</p>;
   }
  
-
   return (
     <Row>
       {products.map((product) => (
-
         <Col sm={12} md={6} lg={4}>
           <Card >
             {urls[product.id] && (
               <Card.Img
-              
                 src={urls[product.id]}
                 variant="top"
                 alt={product.ProductName}
@@ -80,11 +76,9 @@ const ProductsList = () => {
             </Card.Body>
           </Card>
         </Col>
-       
       ))}
     </Row>
   );
 };
 
-
- export default ProductsList;
+export default ProductsList;
