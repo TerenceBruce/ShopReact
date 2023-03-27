@@ -43,7 +43,7 @@ function App(){
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/Shop" element={<Shop />} />
-                  <Route
+                  {/* <Route
                     path="/Checkout"
                     element={
                       <PrivateRoute>
@@ -51,7 +51,7 @@ function App(){
                         <Checkout />{" "}
                       </PrivateRoute>
                     }
-                  />
+                  /> */}
                   <Route
                     path="/UpdateProfile"
                     element={

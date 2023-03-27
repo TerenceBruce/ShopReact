@@ -1,5 +1,6 @@
 
 import { useProducts } from "../contexts/ProductsContext";
+import CurrencyFormat from "react-currency-format";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import {Link} from "react-router-dom";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
@@ -7,7 +8,7 @@ import { useState, useEffect } from "react";
 
 
 const ProductsList = () => {
-  const { products, deleteProduct } =
+  const { products, deleteProduct,getPrice,prices } =
     useProducts();
   const [urls, setUrls] = useState({});
   const [loading, setLoading] = useState();
@@ -15,25 +16,8 @@ const ProductsList = () => {
   const storage = getStorage();
 
   useEffect(() => {
-    setLoading(true);
-    if (products) {
-      products.forEach((product) => {
-        const imageRef = ref(storage, `Product/${product.ProductImage}`);
-        getDownloadURL(imageRef)
-          .then((url) => {
-            setUrls((prevUrls) => ({
-              ...prevUrls,
-              [product.id]: url,
-            }));
-            setLoading(false);
-          })
-          .catch((error) => {
-            setError(error);
-            setLoading(false);
-            
-          });
-      });
-    }
+ 
+    setLoading(false)
   }, []);
 
    if (products.length===0) {
@@ -49,30 +33,40 @@ const ProductsList = () => {
  
 
   return (
+    
     <Row>
+    
       {products.map((product) => (
-
         <Col sm={12} md={6} lg={4}>
           <Card >
-            {urls[product.id] && (
               <Card.Img
               
-                src={urls[product.id]}
+                src={product.images}
                 variant="top"
-                alt={product.ProductName}
+                alt={product.name}
               />
-            )}
+           
             <Card.Body>
               <Card.Title>
                 <Link to={`/products/${product.id}`}>
-                  {product.ProductName}
+                  {product.name}
                 </Link>
               </Card.Title>
               <Card.Text>
-                £{product.ProductPrice}
+              {prices.map((price) => (
+                <CurrencyFormat
+                 renderText={(value) => <>Order Total :{value}</>}
+                 decimalScale={2}
+                 value={price.unit_amount}
+                 displayType={"text"}
+                 thousandSeparator={true}
+                 prefix={"£"}
+                            />
+                
+              ))}
                 <br />
                 <button
-                  onClick={() => deleteProduct(product.id, product.ProductImage)}
+                  onClick={() => deleteProduct(product.id, product.images)}
                 >
                   Delete
                 </button>

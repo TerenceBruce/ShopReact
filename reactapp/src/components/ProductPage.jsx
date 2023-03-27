@@ -17,19 +17,7 @@ const ProductPage = () => {
   const product = products.find((product) => product.id === id);
 
   useEffect(() => {
-    if (product) {
-      setLoading(true);
-      const imageRef = ref(storage, `Product/${product.ProductImage}`);
-      getDownloadURL(imageRef)
-        .then((url) => {
-          setUrl(url);
-          setLoading(false);
-        })
-        .catch((error) => {
-          setError(error);
-          setLoading(false);
-        });
-    }
+    setLoading(false)
   }, [product, storage]);
 
   if (loading) {
@@ -46,13 +34,13 @@ const ProductPage = () => {
     <Row>
       <Col sm={12} md={6} lg={4}>
         <Card >
-          {url && (
-            <Card.Img src={url} variant="top" alt={product.ProductName} />
-          )}
+
+            <Card.Img src={product.images} variant="top" alt={product.name} />
+        
           <Card.Body>
-            <Card.Title>{product.ProductName}</Card.Title>
+            <Card.Title>{product.name}</Card.Title>
             <Card.Text>
-              £{product.ProductPrice}
+              {/* £{product.ProductPrice} */}
               <br />
               {product.description}
               <button onClick={() => addBasket(id)}>Add to basket</button>

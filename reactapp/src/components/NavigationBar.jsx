@@ -8,18 +8,18 @@ import {
     Offcanvas,
   Alert } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
-import { useBasket } from '../contexts/BasketContext';
+// import { useBasket } from '../contexts/BasketContext';
 import Logout from './Logout';
 import ActiveLink from './ActiveLink';
 import '../css/navbar.css';
-import ViewBasket from './ViewBasket';
+// import ViewBasket from './ViewBasket';
 
 
 export default function TestNavbar() {
 
  
 const { currentUser }=useAuth()
-const { success } = useBasket();
+// const { success } = useBasket();
 
 
     return ["xxxl"].map((expand) => (
@@ -36,7 +36,7 @@ const { success } = useBasket();
           <Navbar.Brand  href="/">
             Terry's App
           </Navbar.Brand>
-          <ViewBasket/>  {success && <Alert variant="success">{success}</Alert>}
+          {/* <ViewBasket/>  {success && <Alert variant="success">{success}</Alert>} */}
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
