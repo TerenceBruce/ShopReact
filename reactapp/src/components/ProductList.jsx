@@ -16,7 +16,12 @@ const ProductsList = () => {
   const storage = getStorage();
 
   useEffect(() => {
- 
+    products.map((product) => (
+  
+       getPrice(product.id)))
+
+
+
     setLoading(false)
   }, []);
 
@@ -57,7 +62,7 @@ const ProductsList = () => {
                 <CurrencyFormat
                  renderText={(value) => <>Order Total :{value}</>}
                  decimalScale={2}
-                 value={price.unit_amount}
+                 value={price.unit_amount }
                  displayType={"text"}
                  thousandSeparator={true}
                  prefix={"£"}
@@ -65,11 +70,11 @@ const ProductsList = () => {
                 
               ))}
                 <br />
-                <button
+                {/* <button
                   onClick={() => deleteProduct(product.id, product.images)}
                 >
                   Delete
-                </button>
+                </button> */}    
               </Card.Text>
             </Card.Body>
           </Card>

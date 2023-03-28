@@ -28,11 +28,7 @@ export function ProductsProvider({ children }) {
           
           products.push({ id: doc.id, ...doc.data() });
          
-          products.forEach((product) => {
-            getPrice(product.id)     
-    
-       
-          })
+         
           
           
           
@@ -52,14 +48,15 @@ export function ProductsProvider({ children }) {
       getDocs(collection(db, "Product",productId,"prices"))
       .then((querySnapshot) => {
         const prices = [];
-
         querySnapshot.forEach((doc) => {
-          prices.push({ id: doc.id, ...doc.data() });
           
+          prices.push({ id: doc.id, ...doc.data() });
+        
         });
+        console.log(prices)
         setPrices(prices);
         setLoading(false);
-      
+        
 
       })
       .catch((error) => {
