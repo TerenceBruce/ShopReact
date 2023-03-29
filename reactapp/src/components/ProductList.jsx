@@ -1,28 +1,22 @@
 
 import { useProducts } from "../contexts/ProductsContext";
 import CurrencyFormat from "react-currency-format";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import {Link} from "react-router-dom";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
 import { useState, useEffect } from "react";
-
+import { db } from "../firebase";
 
 const ProductsList = () => {
-  const { products, deleteProduct,getPrice,prices } =
+  const { products,prices,getPrice } =
     useProducts();
-  const [urls, setUrls] = useState({});
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
-  const storage = getStorage();
+ 
 
   useEffect(() => {
-    products.map((product) => (
-  
-       getPrice(product.id)))
-
-
-
-    setLoading(false)
+    products.forEach((product) => {
+      getPrice(product.id)
+    });
   }, []);
 
    if (products.length===0) {

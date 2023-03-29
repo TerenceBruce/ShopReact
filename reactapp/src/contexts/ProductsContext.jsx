@@ -1,7 +1,7 @@
-import { collection, getDocs, doc,where } from "firebase/firestore";
+import { collection, getDocs} from "firebase/firestore";
 import { db } from "../firebase";
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { getDownloadURL, ref, deleteObject } from "firebase/storage";
+
 import { useAuth } from "./AuthContext";
 const ProductsContext = createContext();
 
@@ -23,40 +23,39 @@ export function ProductsProvider({ children }) {
     getDocs(collection(db, "Product"))
       .then((querySnapshot) => {
         const products = [];
-
+        const prices = [];
         querySnapshot.forEach((doc) => {
           
           products.push({ id: doc.id, ...doc.data() });
-         
-         
-          
-          
-          
-          
+     
         });
         setProducts(products);
         setLoading(false);
         console.log(products)
 
       })
-  
+        
+        
+      
       
    
     }, []);
     
     function getPrice(productId){
+      
       getDocs(collection(db, "Product",productId,"prices"))
       .then((querySnapshot) => {
-        const prices = [];
+        
         querySnapshot.forEach((doc) => {
           
           prices.push({ id: doc.id, ...doc.data() });
         
         });
-        console.log(prices)
+        
         setPrices(prices);
         setLoading(false);
-        
+        console.log(prices)
+                
 
       })
       .catch((error) => {
