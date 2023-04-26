@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CurrencyFormat from "react-currency-format";
 import { useParams } from "react-router-dom";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useProducts } from "../contexts/ProductsContext";
@@ -8,13 +9,19 @@ import { Card, Col, Row, Spinner} from "react-bootstrap";
 
 const ProductPage = () => {
   const { id } = useParams();
-  const { products } = useProducts();
+  const { products,getPrice } = useProducts();
   const {addBasket} = useBasket();
   const storage = getStorage();
   const [url, setUrl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [unitPrices, setUnitPrices] = useState({});
   const product = products.find((product) => product.id === id);
+
+  getPrice(product.id).then((unitAmounts) => {
+    const unitPrice = String(unitAmounts);
+    setUnitPrices((prevState) => ({ ...prevState, [product.id]: unitPrice }));
+  })
 
   useEffect(() => {
     setLoading(false)
@@ -32,6 +39,7 @@ const ProductPage = () => {
 
   return (
     <Row>
+
       <Col sm={12} md={6} lg={4}>
         <Card >
 
@@ -40,7 +48,14 @@ const ProductPage = () => {
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
             <Card.Text>
-              {/* £{product.ProductPrice} */}
+              <CurrencyFormat
+                   renderText={(value) => <span>Order Total: {value}</span>}
+                  decimalScale={2}
+                  value={unitPrices[product.id]}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"£"}
+                />
               <br />
               {product.description}
               <button onClick={() => addBasket(id)}>Add to basket</button>

@@ -7,8 +7,9 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase";
 
 const ProductsList = () => {
-  const { products,prices,priceValue } =
+  const { products,getPrice } =
     useProducts();
+    const [unitPrices, setUnitPrices] = useState({});
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
 
@@ -20,7 +21,7 @@ const ProductsList = () => {
   }, []);
 
    if (products.length===0) {
-     return <p>No products found</p>;
+     return <p>Sold out</p>;
    }
   if (loading) {
     return <Spinner animation="border" variant="primary" />;
@@ -34,50 +35,51 @@ const ProductsList = () => {
   return (
     
     <Row>
+    {products.map((product) => {
+       getPrice(product.id).then((unitAmounts) => {
+        const unitPrice = String(unitAmounts);
+        setUnitPrices((prevState) => ({ ...prevState, [product.id]: unitPrice }));
+      });
+     
     
-      {products.map((product,index) => (//The map() method creates a new array with the result of calling a function for every array element.
-          
-        <Col sm={12} md={6} lg={4}>
-          <Card >
-              <Card.Img
-              
-                src={product.images}
-                variant="top"
-                alt={product.name}
-                key={index}
-              />
-           
+  
+      return (
+        <Col sm={12} md={6} lg={4} key={product.id}>
+          <Card>
+         
+            <Card.Img src={product.images} variant="top" alt={product.name} />
+  
             <Card.Body>
               <Card.Title>
-                <Link to={`/products/${product.id}`}>
-                  {product.name}
-                </Link>
+                <Link to={`/products/${product.id}`}>{product.name}</Link>
               </Card.Title>
               <Card.Text>
-              {prices.map((price) => (
-                <CurrencyFormat
-                 renderText={(value) => <>Order Total :{value}</>}
-                 decimalScale={2}
-                 value={priceValue([1])}
-                 displayType={"text"}
-                 thousandSeparator={true}
-                 prefix={"£"}
-                            />
+                {product.description}
                 
-              ))}
+                <br />
+                <CurrencyFormat
+                   renderText={(value) => <span>Order Total: {value}</span>}
+                  decimalScale={2}
+                  value={unitPrices[product.id]}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"£"}
+                />
                 <br />
                 {/* <button
                   onClick={() => deleteProduct(product.id, product.images)}
                 >
                   Delete
-                </button> */}    
+                </button> */}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
-       
-      ))}
-    </Row>
+      );
+    })}
+  </Row>
+  
+
   );
 };
 

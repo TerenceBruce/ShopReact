@@ -1,4 +1,4 @@
-import { collection, getDocs} from "firebase/firestore";
+import { collection, getDocs,where} from "firebase/firestore";
 import { db } from "../firebase";
 import React, { createContext, useState, useEffect, useContext } from "react";
 
@@ -22,7 +22,6 @@ export function ProductsProvider({ children }) {
     getDocs(collection(db, "Product"))
       .then((querySnapshot) => {
         const products = [];
-        const prices = [];
         querySnapshot.forEach((doc) => {
           
           products.push({ id: doc.id, ...doc.data() });
@@ -33,44 +32,25 @@ export function ProductsProvider({ children }) {
         console.log(products)
 
       })
-        
-        
-      
-      
-   
+ 
     }, []);
     
-    function getPrice(productId){
-      
-      getDocs(collection(db, "Product",productId,"prices"))
-      .then((querySnapshot) => {
-        
+    async function getPrice(productId) {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Product", productId, "prices"));
+        const unitAmounts = [];
+    
         querySnapshot.forEach((doc) => {
-          
-          prices.push({ id: doc.id, ...doc.data() });
-        
+          const price = doc.data();
+          unitAmounts.push(price.unit_amount);
         });
-        
-        setPrices(prices);
-        setLoading(false);
-        console.log(prices)
-                
-
-      }).try(
-        prices.map((price,index) => (
-          priceString=(price.unitamount)
-          postiton=(index)
-          setPriceValue({ ...state, price: priceString, postition: index })
-         ))
-      ) => 
-      {}
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-      
-  
+    
+        return unitAmounts;
+      } catch (error) {
+        return Promise.reject(new Error("Failed to fetch prices for product: " + error.message));
+      }
     }
+
 //   function deleteProduct(productId, imageName) {
 //     deleteDoc(doc(db, "products", productId));
 //     const imageRef = ref(storage, `products/${imageName}`);
@@ -87,7 +67,6 @@ export function ProductsProvider({ children }) {
   
   const value = {
     // deleteProduct,
-    priceValue,
     getPrice,
     prices,
     products,
