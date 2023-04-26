@@ -15,9 +15,8 @@ export function ProductsProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [urls, setUrls] = useState({});
   const { currentUser }=useAuth()
-
+  const [priceValue,setPriceValue] =useState([]);
 
   useEffect(() => {
     getDocs(collection(db, "Product"))
@@ -57,7 +56,14 @@ export function ProductsProvider({ children }) {
         console.log(prices)
                 
 
-      })
+      }).try(
+        prices.map((price,index) => (
+          priceString=(price.unitamount)
+          postiton=(index)
+          setPriceValue({ ...state, price: priceString, postition: index })
+         ))
+      ) => 
+      {}
       .catch((error) => {
         setError(error);
         setLoading(false);
@@ -81,6 +87,7 @@ export function ProductsProvider({ children }) {
   
   const value = {
     // deleteProduct,
+    priceValue,
     getPrice,
     prices,
     products,

@@ -7,16 +7,16 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase";
 
 const ProductsList = () => {
-  const { products,prices,getPrice } =
+  const { products,prices,priceValue } =
     useProducts();
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
- 
+
+
 
   useEffect(() => {
-    products.forEach((product) => {
-      getPrice(product.id)
-    });
+    
+    
   }, []);
 
    if (products.length===0) {
@@ -35,7 +35,8 @@ const ProductsList = () => {
     
     <Row>
     
-      {products.map((product) => (
+      {products.map((product,index) => (//The map() method creates a new array with the result of calling a function for every array element.
+          
         <Col sm={12} md={6} lg={4}>
           <Card >
               <Card.Img
@@ -43,6 +44,7 @@ const ProductsList = () => {
                 src={product.images}
                 variant="top"
                 alt={product.name}
+                key={index}
               />
            
             <Card.Body>
@@ -56,7 +58,7 @@ const ProductsList = () => {
                 <CurrencyFormat
                  renderText={(value) => <>Order Total :{value}</>}
                  decimalScale={2}
-                 value={price.unit_amount }
+                 value={priceValue([1])}
                  displayType={"text"}
                  thousandSeparator={true}
                  prefix={"£"}
