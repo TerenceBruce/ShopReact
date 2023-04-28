@@ -65,6 +65,8 @@ export function BasketProvider({ children }) {
             try{
                 if(currentUser){
                 const user = currentUser.uid
+                console.log(user);
+                console.log(productId);
                 const q = query(collection(db, "Basket",user), where("ProductID", "==", {productId}));
                 const querySnapshot = await getDocs(q);
                 await addDoc(collection(db,"Basket", user,productId), {

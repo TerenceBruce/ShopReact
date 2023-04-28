@@ -5,12 +5,12 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useProducts } from "../contexts/ProductsContext";
 import { useBasket } from "../contexts/BasketContext";
 
-import { Card, Col, Row, Spinner} from "react-bootstrap";
+import { Card, Col, Row, Spinner } from "react-bootstrap";
 
 const ProductPage = () => {
   const { id } = useParams();
-  const { products,getPrice } = useProducts();
-  const {addBasket} = useBasket();
+  const { products, getPrice } = useProducts();
+  const { addBasket } = useBasket();
   const storage = getStorage();
   const [url, setUrl] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,14 +18,23 @@ const ProductPage = () => {
   const [unitPrices, setUnitPrices] = useState({});
   const product = products.find((product) => product.id === id);
 
-  getPrice(product.id).then((unitAmounts) => {
-    const unitPrice = String(unitAmounts);
-    setUnitPrices((prevState) => ({ ...prevState, [product.id]: unitPrice }));
-  })
-
   useEffect(() => {
-    setLoading(false)
-  }, [product, storage]);
+    const fetchPrice = async () => {
+      try {
+        const unitAmounts = await getPrice(product.id);
+        const unitPrice = String(unitAmounts);
+        setUnitPrices((prevState) => ({ ...prevState, [product.id]: unitPrice }));
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
+    if (product) {
+      fetchPrice();
+    }
+  }, [product, storage, getPrice]);
 
   if (loading) {
     return <Spinner animation="border" variant="primary" />;
@@ -39,23 +48,20 @@ const ProductPage = () => {
 
   return (
     <Row>
-
       <Col sm={12} md={6} lg={4}>
-        <Card >
-
-            <Card.Img src={product.images} variant="top" alt={product.name} />
-        
+        <Card>
+          <Card.Img src={product.images} variant="top" alt={product.name} />
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
             <Card.Text>
               <CurrencyFormat
-                   renderText={(value) => <span>Order Total: {value}</span>}
-                  decimalScale={2}
-                  value={unitPrices[product.id]}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"£"}
-                />
+                renderText={(value) => <span>Order Total: {value}</span>}
+                decimalScale={2}
+                value={unitPrices[product.id]}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"£"}
+              />
               <br />
               {product.description}
               <button onClick={() => addBasket(id)}>Add to basket</button>
