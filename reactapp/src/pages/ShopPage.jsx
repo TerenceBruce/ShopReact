@@ -11,16 +11,16 @@ export default function ShopPage() {
     <div className="container">
       <NavigationBar />
 
-      <ProductList />
-
       <div className="row">
         <div className="col">
           <div className="box">1</div>
         </div>
 
-        <div className="col ">
-          <div className="box">2</div>
-        </div>
+      <ProductList />
+
+     
+
+      
 
         <div className="col">
           <div className="box">3</div>

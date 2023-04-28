@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from "react";
+import CurrencyFormat from "react-currency-format";
 import { useParams } from "react-router-dom";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useProducts } from "../contexts/ProductsContext";
 import { useBasket } from "../contexts/BasketContext";
 
-import { Card, Col, Row, Spinner} from "react-bootstrap";
+import { Card, Col, Row, Spinner } from "react-bootstrap";
 
 const ProductPage = () => {
   const { id } = useParams();
-  const { products } = useProducts();
-  const {addBasket} = useBasket();
+  const { products, getPrice } = useProducts();
+  const { addBasket } = useBasket();
   const storage = getStorage();
   const [url, setUrl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [unitPrices, setUnitPrices] = useState({});
   const product = products.find((product) => product.id === id);
 
   useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const unitAmounts = await getPrice(product.id);
+        const unitPrice = String(unitAmounts);
+        setUnitPrices((prevState) => ({ ...prevState, [product.id]: unitPrice }));
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    };
+
     if (product) {
-      setLoading(true);
-      const imageRef = ref(storage, `Product/${product.ProductImage}`);
-      getDownloadURL(imageRef)
-        .then((url) => {
-          setUrl(url);
-          setLoading(false);
-        })
-        .catch((error) => {
-          setError(error);
-          setLoading(false);
-        });
+      fetchPrice();
     }
-  }, [product, storage]);
+  }, [product, storage, getPrice]);
 
   if (loading) {
     return <Spinner animation="border" variant="primary" />;
@@ -45,14 +49,19 @@ const ProductPage = () => {
   return (
     <Row>
       <Col sm={12} md={6} lg={4}>
-        <Card >
-          {url && (
-            <Card.Img src={url} variant="top" alt={product.ProductName} />
-          )}
+        <Card>
+          <Card.Img src={product.images} variant="top" alt={product.name} />
           <Card.Body>
-            <Card.Title>{product.ProductName}</Card.Title>
+            <Card.Title>{product.name}</Card.Title>
             <Card.Text>
-              £{product.ProductPrice}
+              <CurrencyFormat
+                renderText={(value) => <span>Order Total: {value}</span>}
+                decimalScale={2}
+                value={unitPrices[product.id]}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"£"}
+              />
               <br />
               {product.description}
               <button onClick={() => addBasket(id)}>Add to basket</button>

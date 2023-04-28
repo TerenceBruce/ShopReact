@@ -41,7 +41,7 @@ export function BasketProvider({ children }) {
         const q = query(collection(db, user));
                 const querySnapshot = await getDocs(q);
                 querySnapshot.forEach((doc) => {
-                    const productid=doc.data().ProductID
+                    const productid = doc.data().ProductID
                     setBasket(prevArray  => [...prevArray ,productid]);
                     
                 });
@@ -65,9 +65,11 @@ export function BasketProvider({ children }) {
             try{
                 if(currentUser){
                 const user = currentUser.uid
-                const q = query(collection(db, user), where("ProductID", "==", {productId}));
+                console.log(user);
+                console.log(productId);
+                const q = query(collection(db, "Basket",user), where("ProductID", "==", {productId}));
                 const querySnapshot = await getDocs(q);
-                await addDoc(collection(db, user), {
+                await addDoc(collection(db,"Basket", user,productId), {
                     ProductID:{productId},
                 })
                 getBasket()
@@ -158,7 +160,7 @@ export function BasketProvider({ children }) {
           <ul>
             {groupedItems.map(({ product, quantity }) => (
               <li key={product.id}>
-                {product.ProductName} - £{product.ProductPrice} x {quantity}
+                {/* {product.name} - £{product.ProductPrice} x {quantity} */}
                 <button onClick={() => deleteItem(product.id)}>
                  Delete
                 </button>

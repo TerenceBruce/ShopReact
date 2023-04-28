@@ -1,44 +1,28 @@
 
 import { useProducts } from "../contexts/ProductsContext";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import CurrencyFormat from "react-currency-format";
 import {Link} from "react-router-dom";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
 import { useState, useEffect } from "react";
-
+import { db } from "../firebase";
 
 const ProductsList = () => {
-  const { products, deleteProduct } =
+  const { products,getPrice } =
     useProducts();
-  const [urls, setUrls] = useState({});
+    const [unitPrices, setUnitPrices] = useState({});
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
-  const storage = getStorage();
+
+
 
   useEffect(() => {
-    setLoading(true);
-    if (products) {
-      products.forEach((product) => {
-        const imageRef = ref(storage, `Product/${product.ProductImage}`);
-        getDownloadURL(imageRef)
-          .then((url) => {
-            setUrls((prevUrls) => ({
-              ...prevUrls,
-              [product.id]: url,
-            }));
-            setLoading(false);
-          })
-          .catch((error) => {
-            setError(error);
-            setLoading(false);
-            
-          });
-      });
-    }
+    
+    
   }, []);
 
-  if (products.length===0) {
-    return <p>No products found</p>;
-  }
+   if (products.length===0) {
+     return <p>Sold out</p>;
+   }
   if (loading) {
     return <Spinner animation="border" variant="primary" />;
   }
@@ -47,37 +31,53 @@ const ProductsList = () => {
   }
  
   return (
+    
     <Row>
-      {products.map((product) => (
-        <Col sm={12} md={6} lg={4}>
-          <Card >
-            {urls[product.id] && (
-              <Card.Img
-                src={urls[product.id]}
-                variant="top"
-                alt={product.ProductName}
-              />
-            )}
+    {products.map((product) => {
+       getPrice(product.id).then((unitAmounts) => {
+        const unitPrice = String(unitAmounts);
+        setUnitPrices((prevState) => ({ ...prevState, [product.id]: unitPrice }));
+      });
+     
+    
+  
+      return (
+        <Col sm={12} md={6} lg={4} key={product.id}>
+          <Card>
+         
+            <Card.Img src={product.images} variant="top" alt={product.name} />
+  
             <Card.Body>
               <Card.Title>
-                <Link to={`/Product/${product.id}`}>
-                  {product.ProductName}
-                </Link>
+                <Link to={`/products/${product.id}`}>{product.name}</Link>
               </Card.Title>
               <Card.Text>
-                £{product.ProductPrice}
+                {product.description}
+                
                 <br />
-                <button
-                  onClick={() => deleteProduct(product.id, product.ProductImage)}
+                <CurrencyFormat
+                   renderText={(value) => <span>Order Total: {value}</span>}
+                  decimalScale={2}
+                  value={unitPrices[product.id]}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"£"}
+                />
+                <br />
+                {/* <button
+                  onClick={() => deleteProduct(product.id, product.images)}
                 >
                   Delete
-                </button>
+                </button> */}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
-      ))}
-    </Row>
+      );
+    })}
+  </Row>
+  
+
   );
 };
 
