@@ -19,7 +19,7 @@ export default function ViewBasket() {
     return (
       <>
         <button variant="primary" onClick={handleShow}>
-          View basket:
+          View basket: 
           {basketTotal()}
         </button>
 

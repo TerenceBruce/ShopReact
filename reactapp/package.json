@@ -11,6 +11,7 @@
     "bootstrap": "^5.2.3",
     "cra-template": "1.2.0",
     "dotenv": "^16.0.3",
+    "eslint-plugin-react": "^7.32.2",
     "firebase": "^9.14.0",
     "firebase-tools": "^11.23.1",
     "react": "^18.2.0",

@@ -59,7 +59,7 @@ export function BasketProvider({ children }) {
        
         })
     }
-    async function addBasket(productId){//Adds products to a basket (BASKET/USERID/PRODUCTID) WHERE USERID IN BASKET LIST ALL PRODUCTS
+   async function addBasket(productId,unitAmount){//Adds products to a basket (BASKET/USERID/PRODUCTID) WHERE USERID IN BASKET LIST ALL PRODUCTS
             try{
              
                 if(currentUser){
@@ -70,7 +70,8 @@ export function BasketProvider({ children }) {
                 const querySnapshot = await getDocs(q);
                 await addDoc(collection(db,"Basket"), {
                     ProductID:{productId},
-                    User:{user}
+                    User:{user},
+                    Price:{unitAmount}
 
                 })
                 getBasket()
@@ -87,28 +88,25 @@ export function BasketProvider({ children }) {
             
         }
         
-    function basketTotalPrice(){
-      const groupedItems = basket.reduce((groupedItems, item) => {
-        const { productId } = item;
-        const product = products.find((product) => product.id === productId);
-        const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId);
-        
-        if (groupedItem) {
-          groupedItem.quantity++;
-        } else {
-          groupedItems.push({ product, quantity: 1 });
-        }
-        
-        
-        return groupedItems;
-      }, []);
-      const totalPrice = groupedItems.reduce((total, { product, quantity }) => {
-
-        return total + (getPrice(product.id) * quantity);
-      }, 0);
-      return totalPrice
+  function basketTotalPrice(){
+    const groupedItems = basket.reduce((groupedItems, item) => {
+      const { Price } = item;
+      const groupedItem = groupedItems.find((groupedItem) => groupedItem.Price === Price);
+      
+        groupedItems.push({ Price});
+      
+      
+      return groupedItems;
+    }, []);
+    const prices = groupedItems.map((item) => item.Price);
+  let totalPrice=0;
+    prices.forEach((price) => {
+      console.log(price);
+      totalPrice =+price
+    });
+  }
     
-    }
+
     function basketTotal(){
         const total = basket.length;
         return total
@@ -142,18 +140,17 @@ export function BasketProvider({ children }) {
       function viewBasket() {
         // Reduce the basket array into an array of objects with each product ID and its quantity
         const groupedItems = basket.reduce((groupedItems, item) => {
-          const { productId } = item; // Destructure the productId property from the current item
-          const product = products.find((product) => product.id === productId); // Find the product with a matching ID from the products array
-          const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId); // Find the grouped item with a matching product ID from the groupedItems array
+          const { ProductID } = item; // Destructure the productId property from the current item
+          const groupedItem = groupedItems.find((groupedItem) => groupedItem.productId === ProductID); // Find the grouped item with a matching product ID from the groupedItems array
       
           // If a matching grouped item is found, increment its quantity by 1
           // Otherwise, push a new object with the current product and a quantity of 1 to the groupedItems array
           if (groupedItem) {
             groupedItem.quantity++;
           } else {
-            groupedItems.push({ product, quantity: 1 });
+            groupedItems.push({ ProductID, quantity: 1 });
           }
-      
+          console.log(groupedItems)
           return groupedItems;
         }, []);
       
@@ -166,7 +163,8 @@ export function BasketProvider({ children }) {
                   {product && (
                     <>
                       {/* Render the product name, price, and quantity */}
-                      {/* <p>{product.name} - £{product.ProductPrice} x {quantity}</p> */}
+                      <p>{product.name}  </p>
+                      {/* <p>- £{product.ProductPrice} x {quantity}</p> */}
                       <button onClick={() => deleteItem(product.id)}>Delete</button>
                     </>
                   )}

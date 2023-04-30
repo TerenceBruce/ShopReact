@@ -64,7 +64,7 @@ const ProductPage = () => {
               />
               <br />
               {product.description}
-              <button onClick={() => addBasket(product.id)}>Add to basket</button>
+              <button onClick={() => addBasket(product.id,unitPrices[product.id])}>Add to basket</button>
             </Card.Text>
           </Card.Body>
         </Card>
