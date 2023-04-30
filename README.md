@@ -4,11 +4,15 @@ Still Fresh Grp Ltd
 #####################
 Steps to run the project-
 #1.cd reactapp
-#2.yarn install
-#3.cd functions 
-#4.npm install
-#5.yarn add dotenv
-#6.create .env in root folder reactapp/.env
+    #1.yarn install
+    #2.yarn add eslint-plugin-react
+    #3.yarn add dotenv
+    #4.create .env file in root folder reactapp/.env
+    
+#2.cd functions 
+    #1.npm install
+
+
 
 #####################
 if dont have yarn -   npm install --global yarn
@@ -18,5 +22,5 @@ if dont have yarn -   npm install --global yarn
 firebase functions 
 
 cd reactapp
-cd functions
-firebase deploy 
+    cd functions
+        firebase deploy 
