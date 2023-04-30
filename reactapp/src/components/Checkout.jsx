@@ -4,7 +4,7 @@
 // import { Link } from "react-router-dom";
 
 // export default function Checkout() 
-
+// 
 // {
 //    const { basketTotal, viewBasket, basketTotalPrice } = useBasket();
 

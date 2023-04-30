@@ -7,6 +7,8 @@ Steps to run the project-
 #2.yarn install
 #3.cd functions 
 #4.npm install
+#5.yarn add dotenv
+#6.create .env in root folder reactapp/.env
 
 #####################
 if dont have yarn -   npm install --global yarn

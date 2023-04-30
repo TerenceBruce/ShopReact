@@ -12,6 +12,8 @@ import {
   query,
   deleteDoc,
 } from "firebase/firestore";
+
+
 import { useAuth } from "./AuthContext"
 import { useProducts } from "./ProductsContext"
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -23,54 +25,53 @@ export function useBasket(){
 
 export function BasketProvider({ children }) {
     const { currentUser }=useAuth()
-    const { products } = useProducts();
+    const { products,getPrice } = useProducts();
     const [error,setError]= useState(null)
     const [success,setSuccess]= useState(null)
     const [loading, setLoading] =useState(false)
     const [basket,setBasket] =useState([])
     const [quantity, setQuantity] = useState({});
+    
 
     
 
-    async function getBasket(){
-        setLoading(true)
-        setBasket([])
-        try{
-        if(currentUser){
-        const user = currentUser.uid
-        const q = query(collection(db, user));
-                const querySnapshot = await getDocs(q);
-                querySnapshot.forEach((doc) => {
-                    const productid = doc.data().ProductID
-                    setBasket(prevArray  => [...prevArray ,productid]);
-                    
-                });
-                setLoading(false)
-                
-                
-            }
-            else{
-                setError("Log in for basket")}
-                setLoading(false)
-          
-            setSuccess("Added to Basket")
-            } catch(error){
-                console.log("ERROR:",error)
-                setLoading(false)
-                
-            }
-   
-}
-    async function addBasket(productId){
+    async function getBasket() {
+     
+          if (!currentUser) {
+            throw new Error('No user logged in');
+          }
+      
+          const userId = currentUser.uid;
+          setLoading(true);
+        setBasket([]);
+        
+        getDocs(collection(db, "Basket"))
+        .then((querySnapshot) => {
+          const basket = [];
+          querySnapshot.forEach((doc) => {
+            
+            basket.push({ id: doc.id, ...doc.data() });
+      
+          });
+          setBasket(basket);
+          setLoading(false);
+          console.log(basket)
+       
+        })
+    }
+    async function addBasket(productId){//Adds products to a basket (BASKET/USERID/PRODUCTID) WHERE USERID IN BASKET LIST ALL PRODUCTS
             try{
+             
                 if(currentUser){
                 const user = currentUser.uid
                 console.log(user);
                 console.log(productId);
-                const q = query(collection(db, "Basket",user), where("ProductID", "==", {productId}));
+                const q = query(collection(db, "Basket"), where("ProductID", "==", {productId}));
                 const querySnapshot = await getDocs(q);
-                await addDoc(collection(db,"Basket", user,productId), {
+                await addDoc(collection(db,"Basket"), {
                     ProductID:{productId},
+                    User:{user}
+
                 })
                 getBasket()
             }else{
@@ -103,7 +104,7 @@ export function BasketProvider({ children }) {
       }, []);
       const totalPrice = groupedItems.reduce((total, { product, quantity }) => {
 
-        return total + (product.ProductPrice * quantity);
+        return total + (getPrice(product.id) * quantity);
       }, 0);
       return totalPrice
     
@@ -138,38 +139,43 @@ export function BasketProvider({ children }) {
           console.log("ERROR:", error);
         }
       }
-    function viewBasket(){
-      const groupedItems = basket.reduce((groupedItems, item) => {
-        const { productId } = item;
-        const product = products.find((product) => product.id === productId);
-        const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId);
-        
-        if (groupedItem) {
-          groupedItem.quantity++;
-        } else {
-          groupedItems.push({ product, quantity: 1 });
-        }
-        
-        
-        return groupedItems;
-      }, []);
-    
-     
-      return (
-        <div>
-          <ul>
-            {groupedItems.map(({ product, quantity }) => (
-              <li key={product.id}>
-                {/* {product.name} - £{product.ProductPrice} x {quantity} */}
-                <button onClick={() => deleteItem(product.id)}>
-                 Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      );
-    }
+      function viewBasket() {
+        // Reduce the basket array into an array of objects with each product ID and its quantity
+        const groupedItems = basket.reduce((groupedItems, item) => {
+          const { productId } = item; // Destructure the productId property from the current item
+          const product = products.find((product) => product.id === productId); // Find the product with a matching ID from the products array
+          const groupedItem = groupedItems.find((groupedItem) => groupedItem.product.id === productId); // Find the grouped item with a matching product ID from the groupedItems array
+      
+          // If a matching grouped item is found, increment its quantity by 1
+          // Otherwise, push a new object with the current product and a quantity of 1 to the groupedItems array
+          if (groupedItem) {
+            groupedItem.quantity++;
+          } else {
+            groupedItems.push({ product, quantity: 1 });
+          }
+      
+          return groupedItems;
+        }, []);
+      
+        // Render a list of products with their quantities
+        return (
+          <div>
+            <ul>
+              {groupedItems.map(({ product, quantity }) => (
+                <li key={product?.id}>
+                  {product && (
+                    <>
+                      {/* Render the product name, price, and quantity */}
+                      {/* <p>{product.name} - £{product.ProductPrice} x {quantity}</p> */}
+                      <button onClick={() => deleteItem(product.id)}>Delete</button>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
     useEffect(() => {// in useEffect as only want to run when mount the component 
         
         getBasket()
