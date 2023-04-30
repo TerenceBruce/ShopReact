@@ -1,6 +1,7 @@
 import {React} from 'react'
 
 import {  Link } from "react-router-dom";
+import Footer from '../components/Footer';
 
 //Bootstrap...elements individualy to avoid installing full BS packages
 import Button  from 'react-bootstrap/Button'; 
@@ -12,7 +13,7 @@ import Col from 'react-bootstrap/Col';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Image from 'react-bootstrap/Image';
-
+import Card from 'react-bootstrap/Card';
 // import ReadStorage from './ReadStorage'
 // import TestProduct from './TestProduct'
 
@@ -56,8 +57,6 @@ export default function Home() {
                 fluid
                 rounded
               />
-              <div className="box mt-5">Still Fresh
-              </div>
             </Col>
             <Col sm={5}>
               <h2 class="font-weight-light">TagLine</h2>
@@ -67,8 +66,51 @@ export default function Home() {
               </Button>
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="https://picsum.photos/id/210/320/200" />
+                <Card.Body>
+                  <Card.Title>Card Title</Card.Title>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                  </Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="https://picsum.photos/id/220/320/200" />
+                <Card.Body>
+                  <Card.Title>Card Title</Card.Title>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                  </Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col>
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="https://picsum.photos/id/230/320/200" />
+                <Card.Body>
+                  <Card.Title>Card Title</Card.Title>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make up the
+                    bulk of the card's content.
+                  </Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         </Container>
       </main>
+      
+      <Footer/>
     </body>
   );
 }
