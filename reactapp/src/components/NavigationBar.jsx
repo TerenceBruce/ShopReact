@@ -1,8 +1,7 @@
 import  React from 'react'
 import { 
      Container , 
-    // Form, 
-    Nav , Navbar , 
+    // Form,  
     // NavDropdown ,
     // NavLink,
     Offcanvas,
@@ -14,29 +13,30 @@ import ActiveLink from './ActiveLink';
 import '../css/navbar.css';
 import ViewBasket from './ViewBasket';
 
+//BootStrap
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 export default function TestNavbar() {
 
 const { currentUser }=useAuth()
 const { success } = useBasket();
 
   return ["xxxl"].map((expand) => (
+    //OG NavBar
     <Navbar
-      fixed="top"
       key={expand}
       bg="#eb8334"
       variant="dark"
       expand={expand}
-      className="mb-3 navbar"
-      textDecoration="none"
     >
       <Container fluid>
         <Navbar.Brand  href="/">
-          Terry's App {String(CheckUser())}
+          Terry's App
         </Navbar.Brand>
         <ViewBasket/>  {success && <Alert variant="success">{success}</Alert>}
-          
         <UserProfileShortcut/>
-        
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand-${expand}`}
@@ -55,11 +55,37 @@ const { success } = useBasket();
                 Home
               </ActiveLink>
               <UserNavbarLinks />          
-        </Nav>
+            </Nav>
           </Offcanvas.Body> 
         </Navbar.Offcanvas>
       </Container>
     </Navbar>
+    // <Navbar bg="dark" variant="dark" expand="lg">
+    //   <Container>
+    //     <Navbar.Brand  href="/">
+    //       Terry's App
+    //     </Navbar.Brand> 
+    //     <UserProfileShortcut/>
+    //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    //     <Navbar.Collapse id="basic-navbar-nav">
+    //       <Nav className="me-auto">
+    //         <Nav.Link href="#home">Home</Nav.Link>
+    //         <Nav.Link href="#link">Link</Nav.Link>
+    //         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+    //           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+    //           <NavDropdown.Item href="#action/3.2">
+    //             Another action
+    //           </NavDropdown.Item>
+    //           <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+    //           <NavDropdown.Divider />
+    //           <NavDropdown.Item href="#action/3.4">
+    //             Separated link
+    //           </NavDropdown.Item>
+    //         </NavDropdown>
+    //       </Nav>
+    //     </Navbar.Collapse>
+    //   </Container>
+    // </Navbar>
   ));
     
   function CheckUser(){
@@ -70,7 +96,6 @@ const { success } = useBasket();
     if (currentUser!==null) { return (
       <>
         <Navbar.Text>
-          asdasd
           Signed in as:<ActiveLink to="/Profile">{currentUser.email}</ActiveLink>
         </Navbar.Text>
       </>
