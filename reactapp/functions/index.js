@@ -1,4 +1,3 @@
-
 // firebase deploy --only functions
 const functions = require("firebase-functions");
 
