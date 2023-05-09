@@ -27,7 +27,7 @@ const PaymentForm = () => {
       // Send the payment method to your server to create a charge
       
       // Assuming the payment was successful, redirect to the PaymentSuccess component
-      // history.push("/PaymentSuccess");
+    
     }
   };
 

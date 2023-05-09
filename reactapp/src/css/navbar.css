@@ -1,8 +1,9 @@
 nav {
     position: sticky-top;
-    background-color: #d89400;
+    background-color:  #f37b57;;
 }
-iconsize {
-    width: 16px;
-    height: 16px;
-}
+.iconsize {
+    height: 10vh;
+    width: 10vw;
+    object-fit: contain;
+  }

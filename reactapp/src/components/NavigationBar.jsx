@@ -34,7 +34,7 @@ const { success } = useBasket();
     >
       <Container fluid>
         <Navbar.Brand  href="/">
-        <img className="iconsize" src={InitalLogo} />
+        <img className="iconsize" src={InitalLogo} alt="Initial Logo"/>
           Terry's App
         </Navbar.Brand>
         <ViewBasket/>  {success && <Alert variant="success">{success}</Alert>}

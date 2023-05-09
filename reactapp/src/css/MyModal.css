@@ -3,11 +3,10 @@
     left: 25%;
     top: 25%;
     width: 50%;
-    border: 3px solid rgb(3, 39, 56);
     padding: 10px;
      background-image: linear-gradient(
-    130deg,#960ad27c,
-    #960ad27c 41.07%,
-    #960ad27c 76.05%
+    130deg, #743c2c85,
+    #743c2c85,
+    #743c2c85
   );
 }

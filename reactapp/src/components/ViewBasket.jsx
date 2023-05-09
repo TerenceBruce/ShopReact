@@ -27,7 +27,7 @@ export default function ViewBasket() {
           {basketTotal()}
         </button>
 
-        <Modal
+        <Modal 
           show={show}
           onHide={handleClose}
           backdrop="static"
@@ -36,8 +36,7 @@ export default function ViewBasket() {
           <Modal.Header>
             <Modal.Title>Basket</Modal.Title>
           </Modal.Header>
-          <Modal.Body >
-            
+          <Modal.Body  >
             {viewBasket()}
             <CurrencyFormat
               renderText={(value) => <h3>Order Total :{value}</h3>}
@@ -51,7 +50,7 @@ export default function ViewBasket() {
             <button type="submit" id="checkout-button" class="btn btn-primary">Checkout</button>
             </form> */}
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer >
             <Link to="/Checkout">Checkout</Link>
   
             <button variant="secondary" onClick={handleClose}>

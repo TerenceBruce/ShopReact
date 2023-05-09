@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
-
+import "../css/home.css"
 const ProductsList = () => {
   const { products,getPrice } =
     useProducts();
@@ -45,7 +45,7 @@ const ProductsList = () => {
         <Col sm={12} md={6} lg={4} key={product.id}>
           <Card>
          
-            <Card.Img src={product.images} variant="top" alt={product.name} />
+            <Card.Img src={product.images} variant="top" alt={product.name}/>
   
             <Card.Body>
               <Card.Title>
