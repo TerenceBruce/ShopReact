@@ -16,10 +16,13 @@ export default function ViewBasket() {
     const {currentUser} =useAuth();
     
     if (currentUser!==null) {
+          
+
     return (
       <>
         <button variant="primary" onClick={handleShow}>
           View basket: 
+        
           {basketTotal()}
         </button>
 
@@ -32,7 +35,8 @@ export default function ViewBasket() {
           <Modal.Header>
             <Modal.Title>Basket</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body >
+            
             {viewBasket()}
             <CurrencyFormat
               renderText={(value) => <h3>Order Total :{value}</h3>}

@@ -10338,6 +10338,13 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
+react-favicon@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-2.0.3.tgz#dfb54562ca91b1e239f5447a5c8c43817c262b78"
+  integrity sha512-eKtog0JO29rxkSHwq48t9EtLLeLtL0YzJsWDrtGr30c/yRt6GQUgHZizjIVJ/24e/MAHKFZg5jVnca+lvcTSZA==
+  dependencies:
+    prop-types "^15.8.1"
+
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"

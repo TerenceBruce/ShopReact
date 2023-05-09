@@ -29,7 +29,7 @@ export function ProductsProvider({ children }) {
         });
         setProducts(products);
         setLoading(false);
-        console.log(products)
+        // console.log(products)
 
       })
  

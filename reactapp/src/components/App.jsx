@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import Checkout from "./Checkout";
+import PaymentSuccess from "./PaymentSuccess";
 // import NavigationBar from "./NavigationBar";
 import Admin from "../pages/Admin";
 import Product from "../pages/Product";
@@ -43,15 +44,26 @@ function App(){
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/Shop" element={<Shop />} />
-                  {/* <Route
+                  <Route
                     path="/Checkout"
                     element={
                       <PrivateRoute>
                         {" "}
                         <Checkout />{" "}
+                       
                       </PrivateRoute>
                     }
-                  /> */}
+                  />
+                  <Route
+                    path="/PaymentSuccess"
+                    element={
+                      <PrivateRoute>
+                        {" "}
+                        <PaymentSuccess />{" "}
+                       
+                      </PrivateRoute>
+                    }
+                  />
                   <Route
                     path="/UpdateProfile"
                     element={

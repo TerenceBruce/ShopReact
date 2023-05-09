@@ -92,18 +92,22 @@ export function BasketProvider({ children }) {
     const groupedItems = basket.reduce((groupedItems, item) => {
       const { Price } = item;
       const groupedItem = groupedItems.find((groupedItem) => groupedItem.Price === Price);
-      
+
         groupedItems.push({ Price});
-      
-      
-      return groupedItems;
+        return groupedItems;
     }, []);
-    const prices = groupedItems.map((item) => item.Price);
+
+  const prices = groupedItems.map((item) => item.Price);
   let totalPrice=0;
-    prices.forEach((price) => {
-      console.log(price);
-      totalPrice =+price
+  
+  prices.forEach((price) => {
+
+      let unitAmount = parseInt(price.unitAmount)
+      totalPrice += unitAmount
+            
     });
+    
+    return totalPrice
   }
     
 
@@ -116,7 +120,7 @@ export function BasketProvider({ children }) {
       async function deleteItem(productId) {
         try {
           if (currentUser) {
-            console.log(productId)
+            // console.log(productId)
             const user = currentUser.uid;
            
             const q = query(
@@ -158,18 +162,18 @@ export function BasketProvider({ children }) {
         return (
           <div>
             <ul>
-              {groupedItems.map(({ product, quantity }) => (
-                <li key={product?.id}>
-                  {product && (
-                    <>
-                      {/* Render the product name, price, and quantity */}
-                      <p>{product.name}  </p>
-                      {/* <p>- £{product.ProductPrice} x {quantity}</p> */}
-                      <button onClick={() => deleteItem(product.id)}>Delete</button>
-                    </>
-                  )}
-                </li>
-              ))}
+            {groupedItems.map(({ ProductID, quantity },index) => (
+           <li key={`${ProductID?.productId}-${index}`}>
+            {ProductID && (
+              <>
+                {/* Render the product name, price, and quantity */}
+                <p>{ProductID.productId}</p>
+                {/* <p>- £{product.ProductPrice} x {quantity}</p> */}
+                <button onClick={() => deleteItem(ProductID.productId)}>Delete</button>
+          </>
+    )}
+  </li>
+))}
             </ul>
           </div>
         );
