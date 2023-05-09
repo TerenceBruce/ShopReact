@@ -1,14 +1,12 @@
 import {React,useState} from 'react'
 import CurrencyFormat from "react-currency-format";
 import "../css/MyModal.css"
-import "../css/basketlist.css"
 import { Modal,
   //  Button
    } from 'react-bootstrap';
 import { useBasket } from '../contexts/BasketContext';
 import { useAuth } from '../contexts/AuthContext';
 import {  Link } from "react-router-dom";
-
 export default function ViewBasket() {
     const [show, setShow] = useState(false);
 
@@ -28,7 +26,7 @@ export default function ViewBasket() {
           {basketTotal()}
         </button>
 
-        <Modal 
+        <Modal
           show={show}
           onHide={handleClose}
           backdrop="static"
@@ -37,7 +35,8 @@ export default function ViewBasket() {
           <Modal.Header>
             <Modal.Title>Basket</Modal.Title>
           </Modal.Header>
-          <Modal.Body  >
+          <Modal.Body >
+            
             {viewBasket()}
             <CurrencyFormat
               renderText={(value) => <h3>Order Total :{value}</h3>}
@@ -51,10 +50,9 @@ export default function ViewBasket() {
             <button type="submit" id="checkout-button" class="btn btn-primary">Checkout</button>
             </form> */}
           </Modal.Body>
-          <Modal.Footer >
-            <Link className='btn' to="/Checkout">Checkout</Link>
-  
-            <button className='btn' variant="secondary" onClick={handleClose}>
+          <Modal.Footer>
+            <Link to="/Checkout">Checkout</Link>
+            <button variant="secondary" onClick={handleClose}>
               Close
             </button>
           </Modal.Footer>
