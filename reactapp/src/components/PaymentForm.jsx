@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
 
-
+import "../css/basketlist.css"
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -34,7 +34,7 @@ const PaymentForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement />
-      <button type="submit" disabled={!stripe}>
+      <button type="submit" className='btn' disabled={!stripe}>
         Pay
       </button>
     </form>

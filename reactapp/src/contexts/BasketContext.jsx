@@ -176,8 +176,9 @@ export function BasketProvider({ children }) {
                     <>
                       {/* Render the product name, price, and quantity */}
                       <p>{getProductName(ProductID.productId)}</p>
+                      <p>{console.log(getPrice(ProductID.productId))}</p>
                       {/* <p>- £{product.ProductPrice} x {quantity}</p> */}
-                      <button className="delete-btn" onClick={() => deleteItem(ProductID.productId)}>
+                      <button className="btn" onClick={() => deleteItem(ProductID.productId)}>
                         Delete
                       </button>
                     </>

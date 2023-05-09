@@ -1,6 +1,7 @@
 import {React,useState} from 'react'
 import CurrencyFormat from "react-currency-format";
 import "../css/MyModal.css"
+import "../css/basketlist.css"
 import { Modal,
   //  Button
    } from 'react-bootstrap';
@@ -51,9 +52,9 @@ export default function ViewBasket() {
             </form> */}
           </Modal.Body>
           <Modal.Footer >
-            <Link to="/Checkout">Checkout</Link>
+            <Link className='btn' to="/Checkout">Checkout</Link>
   
-            <button variant="secondary" onClick={handleClose}>
+            <button className='btn' variant="secondary" onClick={handleClose}>
               Close
             </button>
           </Modal.Footer>

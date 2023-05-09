@@ -9,7 +9,7 @@ import "../css/home.css"
 const ProductsList = () => {
   const { products,getPrice } =
     useProducts();
-    const [unitPrices, setUnitPrices] = useState({});
+  const [unitPrices, setUnitPrices] = useState({});
   const [loading, setLoading] = useState();
   const [error, setError] = useState(null);
 
