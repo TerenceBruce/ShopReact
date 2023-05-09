@@ -1,11 +1,11 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { useHistory} from 'react-router-dom';
+
 
 
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  let history = useHistory();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ const PaymentForm = () => {
       // Send the payment method to your server to create a charge
       
       // Assuming the payment was successful, redirect to the PaymentSuccess component
-      history.push("/PaymentSuccess");
+      // history.push("/PaymentSuccess");
     }
   };
 
