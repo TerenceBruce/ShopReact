@@ -54,7 +54,9 @@ export function BasketProvider({ children }) {
       
           });
           setBasket(basket);
+        
           setLoading(false);
+          
         
        
         })

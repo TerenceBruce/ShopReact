@@ -18,7 +18,9 @@ export default function ShopPage() {
       </header>
       <main>
         <Container>
+        
           <div className="row">
+           
             <div className="col">
               <div className="box">1</div>
             </div>

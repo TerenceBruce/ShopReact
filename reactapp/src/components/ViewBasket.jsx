@@ -7,16 +7,33 @@ import { Modal,
 import { useBasket } from '../contexts/BasketContext';
 import { useAuth } from '../contexts/AuthContext';
 import {  Link } from "react-router-dom";
-export default function ViewBasket() {
-    const [show, setShow] = useState(false);
+import { getFunctions, httpsCallable } from "firebase/functions";
+import { loadStripe } from "@stripe/stripe-js";
 
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY_TEST);
+
+export default function ViewBasket() {
+
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { basketTotal,viewBasket,basketTotalPrice } = useBasket();
+    const { basketTotal,viewBasket,basketTotalPrice,basket } = useBasket();
     const {currentUser} =useAuth();
+
     
     if (currentUser!==null) {
-          
+      
+      const handleButton = async () => {
+        // // Call the createCheckoutSession Cloud Function
+        const functions = getFunctions();
+        const createCheckoutSession = httpsCallable(functions, "createCheckoutSession");
+        const { data } = await createCheckoutSession({ items: basket });
+        const sessionId = data.sessionId;
+    
+        // Redirect the user to the Stripe Checkout page using the session ID
+        const stripe = await stripePromise;
+        stripe.redirectToCheckout({ sessionId });
+      }
 
     return (
       <>
@@ -52,6 +69,7 @@ export default function ViewBasket() {
           </Modal.Body>
           <Modal.Footer>
             <Link to="/Checkout">Checkout</Link>
+            <button onClick={handleButton}>Say Hello</button>
             <button variant="secondary" onClick={handleClose}>
               Close
             </button>
