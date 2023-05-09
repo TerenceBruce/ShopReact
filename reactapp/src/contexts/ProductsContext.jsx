@@ -50,6 +50,15 @@ export function ProductsProvider({ children }) {
         return Promise.reject(new Error("Failed to fetch prices for product: " + error.message));
       }
     }
+    function getProductName(productId) {
+      const product = products.find((product) => product.id === productId);
+    
+      if (product) {
+        return product.name;
+      } else {
+        return "Product not found";
+      }
+    }
 
 //   function deleteProduct(productId, imageName) {
 //     deleteDoc(doc(db, "products", productId));
@@ -67,6 +76,7 @@ export function ProductsProvider({ children }) {
   
   const value = {
     // deleteProduct,
+    getProductName,
     getPrice,
     prices,
     products,

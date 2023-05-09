@@ -1,0 +1,41 @@
+
+.item-list {
+    font-family: Arial, sans-serif;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .item-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .item-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .item-list p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .item-list .delete-btn {
+    background-color: #f37b57;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .item-list .delete-btn:hover {
+    background-color: #e86a4b;
+  }
+  

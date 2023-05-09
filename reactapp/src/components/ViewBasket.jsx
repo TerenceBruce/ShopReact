@@ -7,6 +7,7 @@ import { Modal,
 import { useBasket } from '../contexts/BasketContext';
 import { useAuth } from '../contexts/AuthContext';
 import {  Link } from "react-router-dom";
+
 export default function ViewBasket() {
     const [show, setShow] = useState(false);
 
@@ -52,6 +53,7 @@ export default function ViewBasket() {
           </Modal.Body>
           <Modal.Footer>
             <Link to="/Checkout">Checkout</Link>
+  
             <button variant="secondary" onClick={handleClose}>
               Close
             </button>

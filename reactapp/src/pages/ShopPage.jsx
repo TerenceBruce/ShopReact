@@ -6,12 +6,13 @@ import ProductList from '../components/ProductList'
 import '../css/home.css';
 import NavigationBar from "../components/NavigationBar";
 import Footer from '../components/Footer';
-
 import Container from 'react-bootstrap/Container';
+
 export default function ShopPage() {
+
     
   return (
-    <body>
+    <div>
       <header>
         <NavigationBar/>
       </header>
@@ -55,6 +56,6 @@ export default function ShopPage() {
         </Container>
       </main>
       <Footer/>
-    </body>
+    </div>
   );
 }

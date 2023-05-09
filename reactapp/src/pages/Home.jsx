@@ -19,7 +19,7 @@ import '../css/home.css';
 export default function Home() {
     
   return (
-    <body>
+    <div>
       <header>
         <NavigationBar/>
       </header>
@@ -35,8 +35,8 @@ export default function Home() {
               />
             </Col>
             <Col sm={5}>
-              <h2 class="font-weight-light">TagLine</h2>
-              <p class="mt-5"> Template Text</p>
+              <h2 className="font-weight-light">TagLine</h2>
+              <p className="mt-5"> Template Text</p>
               <Button variant="outline-primary">
                 <Link to="/Shop">Shop</Link>
               </Button>
@@ -87,6 +87,6 @@ export default function Home() {
       </main>
 
       <Footer/>
-    </body>
+    </div>
   );
 }

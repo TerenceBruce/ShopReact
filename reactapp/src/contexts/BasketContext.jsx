@@ -13,7 +13,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-
+import "../css/basketlist.css"
 import { useAuth } from "./AuthContext"
 import { useProducts } from "./ProductsContext"
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
@@ -25,7 +25,7 @@ export function useBasket(){
 
 export function BasketProvider({ children }) {
     const { currentUser }=useAuth()
-    const { products,getPrice } = useProducts();
+    const { products,getPrice,getProductName } = useProducts();
     const [error,setError]= useState(null)
     const [success,setSuccess]= useState(null)
     const [loading, setLoading] =useState(false)
@@ -55,7 +55,7 @@ export function BasketProvider({ children }) {
           });
           setBasket(basket);
           setLoading(false);
-          console.log(basket)
+        
        
         })
     }
@@ -117,30 +117,38 @@ export function BasketProvider({ children }) {
         
 
     }
-      async function deleteItem(productId) {
-        try {
-          if (currentUser) {
-            // console.log(productId)
-            const user = currentUser.uid;
-           
-            const q = query(
-              collection(db, user),
-              where("ProductID", "==", { productId })
-            );
-            const querySnapshot = await getDocs(q);
-             querySnapshot.forEach((doc) => {
-               deleteDoc(doc.ref); // and not doc.data()
-             });
-            getBasket();
-          } else {
-            setError("Log in for basket");
-          }
-
-          setSuccess("Deleted from basket");
-        } catch (error) {
-          console.log("ERROR:", error);
+    async function deleteItem(productId) {
+      try {
+        if (currentUser) {
+    
+          const user = currentUser.uid;
+     
+          const q = query(
+            collection(db, "Basket"),
+            where("ProductID", "==", { productId })
+          );
+          const querySnapshot = await getDocs(q);
+    
+          // Add a counter to keep track of deleted items
+          let deletedItems = 0;
+    
+          querySnapshot.forEach((doc) => {
+            // Check if we haven't deleted any items yet
+            if (deletedItems === 0) {
+              deleteDoc(doc.ref); // and not doc.data()
+              deletedItems++; // Increment the counter
+            }
+          });
+          getBasket();
+        } else {
+          setError("Log in for basket");
         }
+    
+        setSuccess("Deleted one item from basket");
+      } catch (error) {
+        console.log("ERROR:", error);
       }
+    }
       function viewBasket() {
         // Reduce the basket array into an array of objects with each product ID and its quantity
         const groupedItems = basket.reduce((groupedItems, item) => {
@@ -154,26 +162,28 @@ export function BasketProvider({ children }) {
           } else {
             groupedItems.push({ ProductID, quantity: 1 });
           }
-          console.log(groupedItems)
+         
           return groupedItems;
         }, []);
       
         // Render a list of products with their quantities
         return (
           <div>
-            <ul>
-            {groupedItems.map(({ ProductID, quantity },index) => (
-           <li key={`${ProductID?.productId}-${index}`}>
-            {ProductID && (
-              <>
-                {/* Render the product name, price, and quantity */}
-                <p>{ProductID.productId}</p>
-                {/* <p>- £{product.ProductPrice} x {quantity}</p> */}
-                <button onClick={() => deleteItem(ProductID.productId)}>Delete</button>
-          </>
-    )}
-  </li>
-))}
+            <ul className="item-list">
+              {groupedItems.map(({ ProductID, quantity }, index) => (
+                <li key={`${ProductID?.productId}-${index}`}>
+                  {ProductID && (
+                    <>
+                      {/* Render the product name, price, and quantity */}
+                      <p>{getProductName(ProductID.productId)}</p>
+                      {/* <p>- £{product.ProductPrice} x {quantity}</p> */}
+                      <button className="delete-btn" onClick={() => deleteItem(ProductID.productId)}>
+                        Delete
+                      </button>
+                    </>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         );

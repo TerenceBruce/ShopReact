@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import PaymentForm from './PaymentForm';
+import '../css/checkout.css';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY_TEST);
 
 const Checkout = () => {
   const { viewBasket, basketTotalPrice } = useBasket();
-
+  
   return (
-    <div>
-      Checkout:
+    <div className="checkout">
+      <h1>Checkout</h1>
       {viewBasket()}
       <CurrencyFormat
         renderText={(value) => <h3>Order Total: {value}</h3>}
@@ -23,11 +24,13 @@ const Checkout = () => {
         thousandSeparator={true}
         prefix={'£'}
       />
-      <Elements stripe={stripePromise}>
-        <PaymentForm />
-      </Elements>
-      <div className='col'>
-        <Link to='/Shop'>Return to Shop</Link>
+      <div className="payment">
+        <Elements stripe={stripePromise}>
+          <PaymentForm />
+        </Elements>
+      </div>
+      <div className="col">
+        <Link className="link" to="/Shop">Return to Shop</Link>
       </div>
     </div>
   );
