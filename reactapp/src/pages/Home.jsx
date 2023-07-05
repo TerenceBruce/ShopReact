@@ -23,6 +23,10 @@ export default function Home() {
       <header>
         <NavigationBar/>
       </header>
+      <div className='row'>
+        <Button variant="outline-primary">
+            <Link to="/TEST">TEST</Link>
+        </Button> </div>
       <main>
         <Container>
           <Row className='px-4 my-5'>

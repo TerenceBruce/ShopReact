@@ -12,6 +12,7 @@ import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
 import Checkout from "./Checkout";
 import PaymentSuccess from "./PaymentSuccess";
+import TestButton from "./TestButton";
 // import NavigationBar from "./NavigationBar";
 import Admin from "../pages/Admin";
 import Product from "../pages/Product";
@@ -87,6 +88,7 @@ function App(){
                   <Route path="/ForgotPassword" element={<ForgotPassword />} />
                   <Route path="/Admin/AddProduct" element={<Admin />} />
                   <Route path="/Product/:id" element={<Product/>} />
+                  <Route path="/TEST" element={<TestButton />} />
                 </Routes>
               </Router>
             </BasketProvider>
