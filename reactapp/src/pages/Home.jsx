@@ -1,4 +1,4 @@
-import {React} from 'react'
+import React, { useState, useEffect } from 'react';
 
 import {  Link } from "react-router-dom";
 import NavigationBar from '../components/NavigationBar';
@@ -14,15 +14,40 @@ import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 // import ReadStorage from './ReadStorage'
 // import TestProduct from './TestProduct'
+import Loading from '../components/Loading';
 
 import '../css/home.css';
-export default function Home() {
+
+const Home = () => {
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const delay = 500; // Simulated delay for demonstration purposes
+  
+      setTimeout(() => {
+        setLoading(false);
+      }, delay);
+    }, []);
+  
+    const handleLinkClick = () => {
+      setLoading(true);
+    };
     
   return (
     <div>
+      {loading && (
+        <div>
+          <Loading />
+        </div>
+      )}
       <header>
         <NavigationBar/>
       </header>
+      <div className='row'>
+        <Button variant="outline-primary">
+            <Link to="/TEST">TEST</Link>
+        </Button> 
+      </div>
       <main>
         <Container>
           <Row className='px-4 my-5'>
@@ -89,4 +114,6 @@ export default function Home() {
       <Footer/>
     </div>
   );
-}
+};
+
+export default Home;

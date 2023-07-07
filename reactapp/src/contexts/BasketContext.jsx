@@ -54,7 +54,9 @@ export function BasketProvider({ children }) {
       
           });
           setBasket(basket);
+        
           setLoading(false);
+          return basket;
         
        
         })
@@ -168,7 +170,9 @@ export function BasketProvider({ children }) {
       
         // Render a list of products with their quantities
         return (
+    
           <div>
+            
             <ul className="item-list">
               {groupedItems.map(({ ProductID, quantity }, index) => (
                 <li key={`${ProductID?.productId}-${index}`}>

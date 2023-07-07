@@ -20,6 +20,8 @@ if dont have yarn -   npm install --global yarn
 
 #####################
 firebase functions 
+ install firebase CLI 
+ 
 
 cd reactapp
     cd functions

@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useProducts } from "../contexts/ProductsContext";
 import { useBasket } from "../contexts/BasketContext";
-
+import "../css/productpage.css";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
+import NavigationBar from "./NavigationBar"
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -47,13 +48,19 @@ const ProductPage = () => {
   }
 
   return (
-    <Row>
+    <Row className="productpage">
+      <NavigationBar />
       <Col sm={12} md={6} lg={4}>
-        <Card>
-          <Card.Img src={product.images} variant="top" alt={product.name} />
-          <Card.Body>
-            <Card.Title>{product.name}</Card.Title>
-            <Card.Text>
+        <Card className="card">
+          <Card.Img
+            src={product.images}
+            variant="top"
+            alt={product.name}
+            className="cardImg"
+          />
+          <Card.Body className="cardBody">
+            <Card.Title className="cardTitle">{product.name}</Card.Title>
+            <Card.Text className="cardText">
               <CurrencyFormat
                 renderText={(value) => <span>Order Total: {value}</span>}
                 decimalScale={2}
@@ -64,8 +71,13 @@ const ProductPage = () => {
               />
               <br />
               {product.description}
-              
-              <button onClick={() => addBasket(product.id,unitPrices[product.id])}>Add to basket</button>
+
+              <button
+                className="addButton"
+                onClick={() => addBasket(product.id, unitPrices[product.id])}
+              >
+                Add to basket
+              </button>
             </Card.Text>
           </Card.Body>
         </Card>

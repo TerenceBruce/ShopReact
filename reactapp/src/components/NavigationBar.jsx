@@ -8,6 +8,7 @@ import {
   Alert } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
 import { useBasket } from '../contexts/BasketContext';
+import { Link } from 'react-router-dom';
 import Logout from './Logout';
 import ActiveLink from './ActiveLink';
 import '../css/navbar.css';
@@ -33,7 +34,7 @@ const { success } = useBasket();
       expand={expand}
     >
       <Container fluid>
-        <Navbar.Brand  href="/">
+        <Navbar.Brand as={Link} to="/">
         <img className="iconsize" src={InitalLogo} alt="Initial Logo"/>
           Terry's App
         </Navbar.Brand>
