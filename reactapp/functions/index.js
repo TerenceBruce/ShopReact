@@ -5,20 +5,24 @@ const cors = require('cors')({origin: 'http://localhost:3000'})
 
 admin.initializeApp();
 
-exports.getAllBasketItems = functions.https.onRequest((request, response) => {
-    cors(request, response, async () => {
-        try {
-            const snapshot = await admin.firestore().collection('Basket').get();
-            let basketItems = [];
-            snapshot.forEach(doc => {
-                let id = doc.id;
-                let data = doc.data();
-                basketItems.push({ id, ...data });
-            });
-            response.status(200).send(JSON.stringify(basketItems));
-        } catch (error) {
-            console.log(error);
-            response.status(500).send(error);
-        }
+//exports.getAllBasketItems = functions.https.onRequest((request, response) => {
+    exports.helloWorld = functions.https.onRequest((request, response) => {    
+        cors(request, response, async () => {
+            try {
+            //exports.helloWorld = functions.https.onRequest((request, response) => {
+                response.send("Hello, World!");
+              //});
+            // const snapshot = await admin.firestore().collection('Basket').get();
+            // let basketItems = [];
+            // snapshot.forEach(doc => {
+            //     let id = doc.id;
+            //     let data = doc.data();
+            //     basketItems.push({ id, ...data });
+            // });
+            // response.status(200).send(JSON.stringify(basketItems));
+            } catch (error) {
+                console.log(error);
+                response.status(500).send(error);
+            }
+        });
     });
-});

@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import {Container} from "react-bootstrap"
 //components
 import Home from "../pages/Home";
@@ -13,6 +13,7 @@ import UpdateProfile from "./UpdateProfile";
 import Checkout from "./Checkout";
 import PaymentSuccess from "./PaymentSuccess";
 import TestButton from "./TestButton";
+import Loading from './Loading';
 // import NavigationBar from "./NavigationBar";
 import Admin from "../pages/Admin";
 import Product from "../pages/Product";
@@ -25,7 +26,8 @@ import { BasketProvider } from "../contexts/BasketContext";
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  useNavigate 
 } from "react-router-dom";
 //stripe payment
 import { Elements } from "@stripe/react-stripe-js"
@@ -33,7 +35,20 @@ import { loadStripe } from "@stripe/stripe-js";
 
 
 
-function App(){ 
+const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoaded = () => {
+      setLoading(false);
+    };
+
+    handleLoaded(); // Simulating component load for demonstration purposes
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="d-flex align-items-center justify-cintent-center">

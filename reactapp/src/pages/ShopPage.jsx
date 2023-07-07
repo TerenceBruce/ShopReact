@@ -1,4 +1,5 @@
-import {React} from 'react'
+import React, { useState, useEffect } from 'react';
+
 // import {  } from 'react-bootstrap';
 // import ReadStorage from './ReadStorage'
 // import TestProduct from './TestProduct'
@@ -7,12 +8,31 @@ import '../css/home.css';
 import NavigationBar from "../components/NavigationBar";
 import Footer from '../components/Footer';
 import Container from 'react-bootstrap/Container';
+import Loading from '../components/Loading';
 
-export default function ShopPage() {
+const ShopPage = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const delay = 500; // Simulated delay for demonstration purposes
+
+    setTimeout(() => {
+      setLoading(false);
+    }, delay);
+  }, []);
+
+  const handleLinkClick = () => {
+    setLoading(true);
+  };
 
     
   return (
     <div>
+       {loading && (
+        <div>
+          <Loading />
+        </div>
+      )}
       <header>
         <NavigationBar/>
       </header>
@@ -21,17 +41,14 @@ export default function ShopPage() {
         
           <div className="row">
            
-            <div className="col">
-              <div className="box">1</div>
-            </div>
+          
             <ProductList />
-            <div className="col">
-              <div className="box">2</div>
-            </div>
+            
           </div>
         </Container>
       </main>
       <Footer/>
     </div>
   );
-}
+};
+export default ShopPage;

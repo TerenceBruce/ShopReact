@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import Loading from './Loading';
+import { useBasket } from '../contexts/BasketContext';
 
 const BasketItems = () => {
+  const { basket } = useBasket();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [CheckoutBasket,setCheckoutBasket]=useState(true);
+  
   useEffect(() => {
-    fetch('https://us-central1-reactapp-d41d0.cloudfunctions.net/getAllBasketItems')
-      .then((response) => response.json())
-      .then((data) => {
-        setItems(data);
+    setCheckoutBasket= basket;
+   fetch('https://us-central1-reactapp-d41d0.cloudfunctions.net/helloWorld')
+   .then((response) => {
+       response.text().then(text => {
+        console.log(text);
         setLoading(false);
+        });
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -18,7 +24,7 @@ const BasketItems = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading/>
   }
 
   return (
@@ -34,6 +40,14 @@ const BasketItems = () => {
       ) : (
         <p>No items in basket.</p>
       )}
+      {/* <div><body>
+    <div className="logo">
+     <span className="logoText">
+     <img src={InitialLogo} alt="Logo" />
+     </span>
+   </div>
+ </body>
+ </div> */}
     </div>
   );
 };
